@@ -21,6 +21,7 @@
 		18F8C6C318AB574D00A21EFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A518AB574D00A21EFD /* UIKit.framework */; };
 		18F8C6CB18AB574D00A21EFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6C918AB574D00A21EFD /* InfoPlist.strings */; };
 		18F8C6CD18AB574D00A21EFD /* MalariaScreeningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */; };
+		E51F59CC18B1DED900ADB847 /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F59CB18B1DED900ADB847 /* CountView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		18F8C6C818AB574D00A21EFD /* MalariaScreeningTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MalariaScreeningTests-Info.plist"; sourceTree = "<group>"; };
 		18F8C6CA18AB574D00A21EFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MalariaScreeningTests.m; sourceTree = "<group>"; };
+		E51F59CA18B1DED900ADB847 /* CountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountView.h; path = ../CountView.h; sourceTree = "<group>"; };
+		E51F59CB18B1DED900ADB847 /* CountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountView.m; path = ../CountView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 		18F8C6A718AB574D00A21EFD /* MalariaScreening */ = {
 			isa = PBXGroup;
 			children = (
+				E51F59CA18B1DED900ADB847 /* CountView.h */,
+				E51F59CB18B1DED900ADB847 /* CountView.m */,
 				18F8C6B018AB574D00A21EFD /* AppDelegate.h */,
 				18F8C6B118AB574D00A21EFD /* AppDelegate.m */,
 				18F8C6B318AB574D00A21EFD /* Main.storyboard */,
@@ -251,6 +256,7 @@
 			files = (
 				18F8C6B818AB574D00A21EFD /* ViewController.m in Sources */,
 				18F8C6B218AB574D00A21EFD /* AppDelegate.m in Sources */,
+				E51F59CC18B1DED900ADB847 /* CountView.m in Sources */,
 				18F8C6AE18AB574D00A21EFD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +466,7 @@
 				18F8C6D218AB574D00A21EFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18F8C6D318AB574D00A21EFD /* Build configuration list for PBXNativeTarget "MalariaScreeningTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +475,7 @@
 				18F8C6D518AB574D00A21EFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -23,7 +23,7 @@
 @property (nonatomic, weak) NSTimer *cameraTimer;
 @property (nonatomic) NSMutableArray *capturedImages;
 
-
+@property UIImage *finalImage;
 
 @end
 
@@ -182,6 +182,7 @@
         }
         
         // To be ready to start again, clear the captured images array.
+        self.finalImage = [self.capturedImages objectAtIndex:0];
         [self.capturedImages removeAllObjects];
     }
     
@@ -219,6 +220,61 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+-(NSArray*)pixelAtXY:(NSInteger)pointX and:(NSInteger)pointY
+{
+    CGImageRef cgImage = self.finalImage.CGImage;
+    NSUInteger width = CGImageGetWidth(cgImage);
+    NSUInteger height = CGImageGetHeight(cgImage);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    int bytesPerPixel = 4;
+    int bytesPerRow = bytesPerPixel * 1;
+    NSUInteger bitsPerComponent = 8;
+    unsigned char pixelData[4] = { 0, 0, 0, 0 };
+    CGContextRef context = CGBitmapContextCreate(pixelData,
+                                                 1,
+                                                 1,
+                                                 bitsPerComponent,
+                                                 bytesPerRow,
+                                                 colorSpace,
+                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+    CGContextSetBlendMode(context, kCGBlendModeCopy);
+    
+    // Draw the pixel we are interested in onto the bitmap context
+    CGContextTranslateCTM(context, -pointX, -pointY);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, (CGFloat)width, (CGFloat)height), cgImage);
+    CGContextRelease(context);
+    
+    // Convert color values [0..255] to floats [0.0..1.0]
+    CGFloat red   = (CGFloat)pixelData[0] / 255.0f;
+    CGFloat green = (CGFloat)pixelData[1] / 255.0f;
+    CGFloat blue  = (CGFloat)pixelData[2] / 255.0f;
+    CGFloat alpha = (CGFloat)pixelData[3] / 255.0f;
+    
+    //create a mutable array for putting pixel numbers
+    NSMutableArray *pixelArray = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    //add numbers to array
+    [pixelArray  addObject:[NSNumber numberWithDouble:red]];
+    [pixelArray  addObject:[NSNumber numberWithDouble:green]];
+    [pixelArray  addObject:[NSNumber numberWithDouble:blue]];
+    [pixelArray  addObject:[NSNumber numberWithDouble:alpha]];
+    return pixelArray;
+}
+
+- (void)changeLabel:(id)sender{
+    NSArray *array = [self pixelAtXY:1 and:2];
+    //change label.text
+    NSNumber *redNum =  [array objectAtIndex:0];
+    NSNumber *greenNum =  [array objectAtIndex:1];
+    NSNumber *blueNum =  [array objectAtIndex:2];
+    NSNumber *alphaNum =  [array objectAtIndex:3];
+    showRed.text = [redNum stringValue];
+    showGreen.text = [greenNum stringValue];
+    showBlue.text = [blueNum stringValue];
+
+
 }
 
 @end

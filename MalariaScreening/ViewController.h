@@ -8,5 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate >
+@interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate >{
+    IBOutlet UILabel *showRed;
+    IBOutlet UILabel *showBlue;
+    IBOutlet UILabel *showGreen;
+}
+-(IBAction)changeLabel:(id)sender;
 @end
