@@ -221,7 +221,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
--(NSArray*)pixelAtXY:(NSInteger)pointX and:(NSInteger)pointY
+-(UIColor*)pixelAtXY:(NSInteger)pointX and:(NSInteger)pointY
 {
     CGImageRef cgImage = self.finalImage.CGImage;
     NSUInteger width = CGImageGetWidth(cgImage);
@@ -252,29 +252,24 @@
     CGFloat blue  = (CGFloat)pixelData[2] / 255.0f;
     CGFloat alpha = (CGFloat)pixelData[3] / 255.0f;
     
-    //create a mutable array for putting pixel numbers
-    NSMutableArray *pixelArray = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    //add numbers to array
-    [pixelArray  addObject:[NSNumber numberWithDouble:red]];
-    [pixelArray  addObject:[NSNumber numberWithDouble:green]];
-    [pixelArray  addObject:[NSNumber numberWithDouble:blue]];
-    [pixelArray  addObject:[NSNumber numberWithDouble:alpha]];
-    return pixelArray;
+    //create and return UIColor
+    UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+    return acolor;
 }
-
 - (void)changeLabel:(id)sender{
-    NSArray *array = [self pixelAtXY:1 and:2];
+    UIColor *acolor = [self pixelAtXY:1 and:2];
     //change label.text
-    NSNumber *redNum =  [array objectAtIndex:0];
-    NSNumber *greenNum =  [array objectAtIndex:1];
-    NSNumber *blueNum =  [array objectAtIndex:2];
-    NSNumber *alphaNum =  [array objectAtIndex:3];
-    showRed.text = [redNum stringValue];
-    showGreen.text = [greenNum stringValue];
-    showBlue.text = [blueNum stringValue];
-
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    CGFloat alpha;
+    [acolor getRed:&red green:&green blue:&blue alpha:&alpha];
+    
+    showRed.text = [NSString stringWithFormat: @"%.2f", red];
+    showGreen.text = [NSString stringWithFormat: @"%.2f", green];
+    showBlue.text = [NSString stringWithFormat: @"%.2f", blue];
 
 }
+
 
 @end
