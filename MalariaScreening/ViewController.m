@@ -270,6 +270,18 @@
     showBlue.text = [NSString stringWithFormat: @"%.2f", blue];
 
 }
+- (NSArray*)arrayOfImageColor:(id)sender{
+    
+    NSMutableArray *colorArray = [[NSMutableArray alloc]init];
+    for (int i = 0;i<self.finalImage.size.height;i++) {
+        for(int j= 0;j<self.finalImage.size.width;j++){
+            UIColor *color = [self pixelAtXY:i and:j];
+            [colorArray addObject:color];
+        
+        }
+    }
 
-
+    return colorArray;
+    
+}
 @end
