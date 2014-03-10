@@ -271,10 +271,10 @@
     showRed.text = [NSString stringWithFormat: @"%.2f", red];
     showGreen.text = [NSString stringWithFormat: @"%.2f", green];
     showBlue.text = [NSString stringWithFormat: @"%.2f", blue];
-    NSInteger noob  = self.finalImage.size.width*self.finalImage.size.height;
-//    for(int i=0;i<self.finalImage.size.height;i++){
+    NSInteger noob  = self.finalImage.size.width*100;
+   for(int i=0;i<self.finalImage.size.height;i++){
     tester = [self getRGBAsFromImage:self.finalImage atX:0 andY:0 count:noob];
-  //  }
+   }
 
 }
 - (NSArray*)arrayOfImageColor:(id)sender{
