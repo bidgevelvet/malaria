@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1886A88D18CEC77F0091EEE7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1886A88C18CEC77F0091EEE7 /* opencv2.framework */; };
+		18F0A79718CEEDA700D5D4B9 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */; };
 		18F8C6A218AB574D00A21EFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A118AB574D00A21EFD /* Foundation.framework */; };
 		18F8C6A418AB574D00A21EFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A318AB574D00A21EFD /* CoreGraphics.framework */; };
 		18F8C6A618AB574D00A21EFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A518AB574D00A21EFD /* UIKit.framework */; };
@@ -14,7 +16,7 @@
 		18F8C6AE18AB574D00A21EFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6AD18AB574D00A21EFD /* main.m */; };
 		18F8C6B218AB574D00A21EFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6B118AB574D00A21EFD /* AppDelegate.m */; };
 		18F8C6B518AB574D00A21EFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6B318AB574D00A21EFD /* Main.storyboard */; };
-		18F8C6B818AB574D00A21EFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6B718AB574D00A21EFD /* ViewController.m */; };
+		18F8C6B818AB574D00A21EFD /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6B718AB574D00A21EFD /* ViewController.mm */; };
 		18F8C6BA18AB574D00A21EFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6B918AB574D00A21EFD /* Images.xcassets */; };
 		18F8C6C118AB574D00A21EFD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6C018AB574D00A21EFD /* XCTest.framework */; };
 		18F8C6C218AB574D00A21EFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A118AB574D00A21EFD /* Foundation.framework */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1886A88C18CEC77F0091EEE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		18F0A79518CEEDA700D5D4B9 /* UIImageCVMatConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageCVMatConverter.h; sourceTree = "<group>"; };
+		18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIImageCVMatConverter.mm; sourceTree = "<group>"; };
 		18F8C69E18AB574D00A21EFD /* MalariaScreening.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MalariaScreening.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F8C6A118AB574D00A21EFD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18F8C6A318AB574D00A21EFD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,7 +52,7 @@
 		18F8C6B118AB574D00A21EFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18F8C6B418AB574D00A21EFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F8C6B618AB574D00A21EFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		18F8C6B718AB574D00A21EFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		18F8C6B718AB574D00A21EFD /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		18F8C6B918AB574D00A21EFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18F8C6BF18AB574D00A21EFD /* MalariaScreeningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MalariaScreeningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F8C6C018AB574D00A21EFD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1886A88D18CEC77F0091EEE7 /* opencv2.framework in Frameworks */,
 				18F8C6A418AB574D00A21EFD /* CoreGraphics.framework in Frameworks */,
 				18F8C6A618AB574D00A21EFD /* UIKit.framework in Frameworks */,
 				18F8C6A218AB574D00A21EFD /* Foundation.framework in Frameworks */,
@@ -104,6 +110,7 @@
 		18F8C6A018AB574D00A21EFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1886A88C18CEC77F0091EEE7 /* opencv2.framework */,
 				18F8C6A118AB574D00A21EFD /* Foundation.framework */,
 				18F8C6A318AB574D00A21EFD /* CoreGraphics.framework */,
 				18F8C6A518AB574D00A21EFD /* UIKit.framework */,
@@ -121,7 +128,9 @@
 				18F8C6B118AB574D00A21EFD /* AppDelegate.m */,
 				18F8C6B318AB574D00A21EFD /* Main.storyboard */,
 				18F8C6B618AB574D00A21EFD /* ViewController.h */,
-				18F8C6B718AB574D00A21EFD /* ViewController.m */,
+				18F8C6B718AB574D00A21EFD /* ViewController.mm */,
+				18F0A79518CEEDA700D5D4B9 /* UIImageCVMatConverter.h */,
+				18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */,
 				18F8C6B918AB574D00A21EFD /* Images.xcassets */,
 				18F8C6A818AB574D00A21EFD /* Supporting Files */,
 			);
@@ -254,10 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F8C6B818AB574D00A21EFD /* ViewController.m in Sources */,
+				18F8C6B818AB574D00A21EFD /* ViewController.mm in Sources */,
 				18F8C6B218AB574D00A21EFD /* AppDelegate.m in Sources */,
 				E51F59CC18B1DED900ADB847 /* CountView.m in Sources */,
 				18F8C6AE18AB574D00A21EFD /* main.m in Sources */,
+				18F0A79718CEEDA700D5D4B9 /* UIImageCVMatConverter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +394,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Big/Desktop/SeniorProject/MalariaScreening,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MalariaScreening/MalariaScreening-Prefix.pch";
 				INFOPLIST_FILE = "MalariaScreening/MalariaScreening-Info.plist";
@@ -397,6 +411,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Big/Desktop/SeniorProject/MalariaScreening,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MalariaScreening/MalariaScreening-Prefix.pch";
 				INFOPLIST_FILE = "MalariaScreening/MalariaScreening-Info.plist";
