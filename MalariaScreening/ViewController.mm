@@ -295,6 +295,9 @@
 //    
 //    
 //}
+- (void)sliderValueChange:(id)sender{
+    
+}
 - (NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(int)count
 {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
@@ -337,9 +340,10 @@
 -(void)greyScaleImage:(UIImage*)image
 {
     cv::Mat mat = [UIImageCVMatConverter cvMatFromUIImage:image];
-    cv::Mat matOut;
+    cv::Mat matOut; cv::Mat binary;
     cv::cvtColor(mat, matOut, CV_RGB2GRAY);
-    self.finalImage = [UIImageCVMatConverter UIImageFromCVMat:matOut];
+    cv::threshold(matOut, binary, thresholdSlider.value, 255, cv::THRESH_BINARY);
+    self.finalImage = [UIImageCVMatConverter UIImageFromCVMat:binary];
     [self.imageView setImage:self.finalImage];
 }
 

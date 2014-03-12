@@ -75,6 +75,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="127" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="qN1-DK-Ew4">
+                                <rect key="frame" x="158" y="446" width="118" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -83,6 +87,7 @@
                         <outlet property="showBlue" destination="0rD-5I-CW1" id="EtF-if-2iP"/>
                         <outlet property="showGreen" destination="gGL-zz-OFJ" id="MCA-Nc-qi7"/>
                         <outlet property="showRed" destination="drR-Ds-tvk" id="ahZ-f5-zzg"/>
+                        <outlet property="thresholdSlider" destination="qN1-DK-Ew4" id="yti-4l-7Wg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

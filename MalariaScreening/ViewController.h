@@ -12,6 +12,10 @@
     IBOutlet UILabel *showRed;
     IBOutlet UILabel *showBlue;
     IBOutlet UILabel *showGreen;
+    IBOutlet UISlider *thresholdSlider;
+    
+    
 }
 -(IBAction)changeLabel:(id)sender;
+-(IBAction)sliderValueChange:(id)sender;
 @end
