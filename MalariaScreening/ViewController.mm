@@ -340,9 +340,17 @@
 -(void)greyScaleImage:(UIImage*)image
 {
     cv::Mat mat = [UIImageCVMatConverter cvMatFromUIImage:image];
-    cv::Mat matOut; cv::Mat binary;
+    cv::Mat matOut; cv::Mat binary; cv::Mat contourImage;
     cv::cvtColor(mat, matOut, CV_RGB2GRAY);
     cv::threshold(matOut, binary, thresholdSlider.value, 255, cv::THRESH_BINARY);
+    std::vector<std::vector<cv::Point>> contours;
+    //cv::dilate(binary,binary,cv::Mat());
+    //cv::erode(binary, binary, cv::Mat());
+    cv::findContours(binary, contours, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
+    int ncont = contours.size();
+    NSLog(@"%d",ncont);
+    cv::Scalar color = cv::Scalar(255,0,255);
+    cv::drawContours(binary, contours, -1, color);
     self.finalImage = [UIImageCVMatConverter UIImageFromCVMat:binary];
     [self.imageView setImage:self.finalImage];
 }
