@@ -13,13 +13,15 @@
                         <viewControllerLayoutGuide type="bottom" id="sSZ-HT-yom"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUm-7d-saW">
-                                <rect key="frame" x="30" y="349" width="77" height="30"/>
+                                <rect key="frame" x="12" y="307" width="104" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.25900203160000002" blue="0.34111229389999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Take Photo">
+                                    <color key="titleColor" red="0.0057319972830000001" green="0.00565909029" blue="0.0011930713000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -27,28 +29,32 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4r-6t-9Cl">
-                                <rect key="frame" x="165" y="349" width="135" height="30"/>
+                                <rect key="frame" x="196" y="307" width="104" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Choose from library">
+                                <color key="backgroundColor" red="1" green="0.25900203160000002" blue="0.34111229389999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choose Photo">
+                                    <color key="titleColor" red="0.0057319972826086474" green="0.0056590902898721266" blue="0.0011930713001515477" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="showImagePickerForPhotoPicker:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="awT-Tm-5wQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Malaria Screening" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gr9-er-lwA">
-                                <rect key="frame" x="91" y="20" width="138" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Malaria Screening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gr9-er-lwA">
+                                <rect key="frame" x="81" y="20" width="158" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.1620492717" green="0.14337202490000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.41005946630000001" green="1" blue="0.99940132680000004" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhO-Gl-Toe">
-                                <rect key="frame" x="12" y="49" width="297" height="292"/>
+                                <rect key="frame" x="12" y="47.5" width="297" height="247"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vJ-ci-GUe">
-                                <rect key="frame" x="200" y="376" width="74" height="30"/>
+                                <rect key="frame" x="211" y="345" width="74" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Contour">
@@ -59,22 +65,43 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="127" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="qN1-DK-Ew4">
-                                <rect key="frame" x="158" y="446" width="118" height="31"/>
+                                <rect key="frame" x="95" y="436" width="118" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sK-mP-cbg">
-                                <rect key="frame" x="104" y="387" width="72" height="30"/>
+                                <rect key="frame" x="28" y="345" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Contrast">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C4-35-5Dw">
+                                <rect key="frame" x="41" y="389" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.41005946630000001" green="1" blue="0.99940132680000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Contrast">
+                                <state key="normal" title="Noob1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-V6-huj">
+                                <rect key="frame" x="225" y="389" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.41005946630000001" green="1" blue="0.99940132680000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Noob2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90007218070652173" green="0.90007218070652173" blue="0.90007218070652173" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="Noob1" destination="0C4-35-5Dw" id="666-ui-6bU"/>
+                        <outlet property="Noob2" destination="n6g-V6-huj" id="zcX-yK-DcF"/>
                         <outlet property="imageView" destination="hhO-Gl-Toe" id="Elv-89-MuE"/>
+                        <outlet property="roundChoosePic" destination="V4r-6t-9Cl" id="lrn-TE-HTj"/>
+                        <outlet property="roundTakePic" destination="dUm-7d-saW" id="Id7-G0-GvB"/>
                         <outlet property="roundedButton" destination="6vJ-ci-GUe" id="jIO-mu-Kge"/>
                         <outlet property="roundedButton2" destination="7sK-mP-cbg" id="PNm-Ae-BvK"/>
                         <outlet property="thresholdSlider" destination="qN1-DK-Ew4" id="yti-4l-7Wg"/>
@@ -92,7 +119,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8Nr-k7-vhB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6zu-U2-HMC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -105,6 +132,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

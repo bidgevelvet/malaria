@@ -52,6 +52,21 @@
     [btnLayer2 setMasksToBounds:YES];
     [btnLayer2 setCornerRadius:5.0f];
     
+    CALayer *btnLayer3 = [_roundChoosePic layer];
+    [btnLayer3 setMasksToBounds:YES];
+    [btnLayer3 setCornerRadius:5.0f];
+    
+    CALayer *btnLayer4= [_roundTakePic layer];
+    [btnLayer4 setMasksToBounds:YES];
+    [btnLayer4 setCornerRadius:5.0f];
+    
+    CALayer *btnLayer5 = [_Noob1 layer];
+    [btnLayer5 setMasksToBounds:YES];
+    [btnLayer5 setCornerRadius:5.0f];
+
+    CALayer *btnLayer6= [_Noob2 layer];
+    [btnLayer6 setMasksToBounds:YES];
+    [btnLayer6 setCornerRadius:5.0f];
 }
 
 
