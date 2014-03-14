@@ -16,6 +16,8 @@
     
     
 }
+@property (weak, nonatomic) IBOutlet UIButton *roundedButton2;
+@property (weak, nonatomic) IBOutlet UIButton *roundedButton;
 -(IBAction)changeLabel:(id)sender;
 -(IBAction)sliderValueChange:(id)sender;
 @end

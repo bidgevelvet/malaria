@@ -22,8 +22,8 @@
 		18F8C6C318AB574D00A21EFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A518AB574D00A21EFD /* UIKit.framework */; };
 		18F8C6CB18AB574D00A21EFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6C918AB574D00A21EFD /* InfoPlist.strings */; };
 		18F8C6CD18AB574D00A21EFD /* MalariaScreeningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */; };
+		A517087E18D3435C0027EB8F /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A517087D18D3435C0027EB8F /* opencv2.framework */; };
 		E51F59CC18B1DED900ADB847 /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F59CB18B1DED900ADB847 /* CountView.m */; };
-		E5B91A2D18D00EC500BBA92F /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1886A88C18CEC77F0091EEE7 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +59,7 @@
 		18F8C6C818AB574D00A21EFD /* MalariaScreeningTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MalariaScreeningTests-Info.plist"; sourceTree = "<group>"; };
 		18F8C6CA18AB574D00A21EFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MalariaScreeningTests.m; sourceTree = "<group>"; };
+		A517087D18D3435C0027EB8F /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
 		E51F59CA18B1DED900ADB847 /* CountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountView.h; path = ../CountView.h; sourceTree = "<group>"; };
 		E51F59CB18B1DED900ADB847 /* CountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountView.m; path = ../CountView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5B91A2D18D00EC500BBA92F /* opencv2.framework in Frameworks */,
+				A517087E18D3435C0027EB8F /* opencv2.framework in Frameworks */,
 				18F8C6A418AB574D00A21EFD /* CoreGraphics.framework in Frameworks */,
 				18F8C6A618AB574D00A21EFD /* UIKit.framework in Frameworks */,
 				18F8C6A218AB574D00A21EFD /* Foundation.framework in Frameworks */,
@@ -110,6 +111,7 @@
 		18F8C6A018AB574D00A21EFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A517087D18D3435C0027EB8F /* opencv2.framework */,
 				1886A88C18CEC77F0091EEE7 /* opencv2.framework */,
 				18F8C6A118AB574D00A21EFD /* Foundation.framework */,
 				18F8C6A318AB574D00A21EFD /* CoreGraphics.framework */,
@@ -398,6 +400,7 @@
 					"$(inherited)",
 					/Users/Big/Desktop/SeniorProject/MalariaScreening,
 					/Users/Jakkrapat/Desktop/SeniorProject/MalariaScreening,
+					/Users/Puk/Desktop/SeniorProject/MalariaScreening,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MalariaScreening/MalariaScreening-Prefix.pch";
@@ -416,6 +419,7 @@
 					"$(inherited)",
 					/Users/Big/Desktop/SeniorProject/MalariaScreening,
 					/Users/Jakkrapat/Desktop/SeniorProject/MalariaScreening,
+					/Users/Puk/Desktop/SeniorProject/MalariaScreening,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MalariaScreening/MalariaScreening-Prefix.pch";
