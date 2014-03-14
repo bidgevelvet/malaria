@@ -208,6 +208,9 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     [self.capturedImages addObject:image];
+    /// make screen fit
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    ////
     
     if ([self.cameraTimer isValid])
     {
@@ -350,6 +353,7 @@
     cv::findContours(binary, contours, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
     cv::cvtColor(binary, binary, CV_GRAY2BGR);
     int ncont = contours.size();
+    ncont--; // subtract edge
     NSLog(@"%d",ncont);
     cv::Scalar color = cv::Scalar(255,0,255);
     cv::drawContours(binary, contours, -1, color);
