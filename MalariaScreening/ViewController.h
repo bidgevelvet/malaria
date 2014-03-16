@@ -27,8 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *Noob2;
 
 
-
-
--(IBAction)changeLabel:(id)sender;
--(IBAction)sliderValueChange:(id)sender;
+-(IBAction)thresholdButton:(id)sender;
+-(IBAction)findContourButton:(id)sender;
+-(IBAction)greyScaleButton:(id)sender;
+-(IBAction)createMat:(id)sender;
 @end

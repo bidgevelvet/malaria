@@ -25,6 +25,7 @@
 @property (nonatomic) NSMutableArray *capturedImages;
 
 @property UIImage *finalImage;
+@property cv::Mat globalMat;
 
 @end
 
@@ -287,44 +288,21 @@
     UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
     return acolor;
 }
-- (void)changeLabel:(id)sender{
-    [self greyScaleImage:self.finalImage];
-   // UIColor *acolor = [self pixelAtXY:1 and:2];
-    //change label.text
-//    CGFloat red;
-//    CGFloat green;
-//    CGFloat blue;
-//    CGFloat alpha;
-//    NSArray *tester;
-//    [acolor getRed:&red green:&green blue:&blue alpha:&alpha];
-//    
-//    showRed.text = [NSString stringWithFormat: @"%.2f", red];
-//    showGreen.text = [NSString stringWithFormat: @"%.2f", green];
-//    showBlue.text = [NSString stringWithFormat: @"%.2f", blue];
-//    NSInteger noob  = self.finalImage.size.width*100;
-//   for(int i=0;i<self.finalImage.size.height;i++){
-//    tester = [self getRGBAsFromImage:self.finalImage atX:0 andY:i*100 count:noob];
-//   }
 
+- (void)findContourButton:(id)sender{
+    self.finalImage = [self findContour:self.globalMat];
+    [self.imageView setImage:self.finalImage];
 }
-//- (NSArray*)arrayOfImageColor:(id)sender{
-//    
-//    NSMutableArray *colorArray = [[NSMutableArray alloc]init];
-//    for (int i = 0;i<self.finalImage.size.height;i++) {
-//        NSLog(@"For i = %i",i);
-//        for(int j= 0;j<self.finalImage.size.width;j++){
-//            NSLog(@"for j = %i",j);
-//            UIColor *color = [self pixelAtXY:i and:j];
-//            [colorArray addObject:color];
-//        }
-//    }
-//
-//    return colorArray;
-//    
-//    
-//}
-- (void)sliderValueChange:(id)sender{
-    
+- (void)greyScaleButton:(id)sender{
+    self.finalImage = [self greyScaleImage:self.globalMat];
+    [self.imageView setImage:self.finalImage];
+}
+- (void)thresholdButton:(id)sender{
+    self.finalImage = [self threshold:self.globalMat];
+    [self.imageView setImage:self.finalImage];
+}
+- (void)createMat:(id)sender{
+    self.globalMat = [UIImageCVMatConverter cvMatFromUIImage:self.finalImage];
 }
 - (NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(int)count
 {
@@ -365,27 +343,38 @@
     NSLog(@"%@",result);
     return result;
 }
--(void)greyScaleImage:(UIImage*)image
-{
-    cv::Mat mat = [UIImageCVMatConverter cvMatFromUIImage:image];
-    cv::Mat matOut; cv::Mat binary; cv::Mat contourImage;
-    cv::cvtColor(mat, matOut, CV_RGB2GRAY);
-    cv::threshold(matOut, binary, thresholdSlider.value, 255, cv::THRESH_BINARY);
-    std::vector<std::vector<cv::Point>> contours;
-    cv::dilate(binary,binary,cv::Mat());
-    cv::erode(binary, binary, cv::Mat());
 
-    cv::findContours(binary, contours, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
-    cv::cvtColor(binary, binary, CV_GRAY2BGR);
+-(UIImage*)greyScaleImage:(cv::Mat)mat
+{
+    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+//    cv::dilate(binary,binary,cv::Mat());
+//    cv::erode(binary, binary, cv::Mat());
+    self.globalMat = mat;
+    return [UIImageCVMatConverter UIImageFromCVMat:mat];
+    
+}
+-(UIImage*)findContour:(cv::Mat)mat
+{
+    std::vector<std::vector<cv::Point>> contours;
+    cv::findContours(mat,contours,CV_RETR_LIST,CV_CHAIN_APPROX_SIMPLE);
+    cv::cvtColor(mat,mat,CV_GRAY2BGR);
     int ncont = contours.size();
     ncont--; // subtract edge
     NSLog(@"%d",ncont);
     cv::Scalar color = cv::Scalar(255,0,255);
-    cv::drawContours(binary, contours, -1, color);
+    cv::drawContours(mat, contours, -1, color);
+    self.globalMat = mat;
+    return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
-    
-    self.finalImage = [UIImageCVMatConverter UIImageFromCVMat:binary];
-    [self.imageView setImage:self.finalImage];
 }
+-(UIImage*)threshold:(cv::Mat)mat
+{
+    //cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
+    self.globalMat = mat;
+    return [UIImageCVMatConverter UIImageFromCVMat:mat];
+    
+}
+
 
 @end
