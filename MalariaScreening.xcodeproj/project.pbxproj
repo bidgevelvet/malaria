@@ -23,6 +23,8 @@
 		18F8C6CB18AB574D00A21EFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6C918AB574D00A21EFD /* InfoPlist.strings */; };
 		18F8C6CD18AB574D00A21EFD /* MalariaScreeningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */; };
 		A517087E18D3435C0027EB8F /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A517087D18D3435C0027EB8F /* opencv2.framework */; };
+		A5EC6C5B18DBF847006677CB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5A18DBF847006677CB /* TableViewController.m */; };
+		A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5D18DBF8AF006677CB /* TableCell.m */; };
 		E51F59CC18B1DED900ADB847 /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F59CB18B1DED900ADB847 /* CountView.m */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,10 @@
 		18F8C6CA18AB574D00A21EFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MalariaScreeningTests.m; sourceTree = "<group>"; };
 		A517087D18D3435C0027EB8F /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
+		A5EC6C5918DBF847006677CB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		A5EC6C5A18DBF847006677CB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		A5EC6C5C18DBF8AF006677CB /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		A5EC6C5D18DBF8AF006677CB /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 		E51F59CA18B1DED900ADB847 /* CountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountView.h; path = ../CountView.h; sourceTree = "<group>"; };
 		E51F59CB18B1DED900ADB847 /* CountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountView.m; path = ../CountView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +141,10 @@
 				18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */,
 				18F8C6B918AB574D00A21EFD /* Images.xcassets */,
 				18F8C6A818AB574D00A21EFD /* Supporting Files */,
+				A5EC6C5918DBF847006677CB /* TableViewController.h */,
+				A5EC6C5A18DBF847006677CB /* TableViewController.m */,
+				A5EC6C5C18DBF8AF006677CB /* TableCell.h */,
+				A5EC6C5D18DBF8AF006677CB /* TableCell.m */,
 			);
 			path = MalariaScreening;
 			sourceTree = "<group>";
@@ -266,8 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F8C6B818AB574D00A21EFD /* ViewController.mm in Sources */,
+				A5EC6C5B18DBF847006677CB /* TableViewController.m in Sources */,
 				18F8C6B218AB574D00A21EFD /* AppDelegate.m in Sources */,
 				E51F59CC18B1DED900ADB847 /* CountView.m in Sources */,
+				A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */,
 				18F8C6AE18AB574D00A21EFD /* main.m in Sources */,
 				18F0A79718CEEDA700D5D4B9 /* UIImageCVMatConverter.mm in Sources */,
 			);
