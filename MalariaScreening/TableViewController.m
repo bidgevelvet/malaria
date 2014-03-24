@@ -14,7 +14,7 @@
 @end
 
 @implementation TableViewController
-@synthesize Title;
+@synthesize title;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
 	dataList = [[NSMutableArray alloc] initWithObjects:@"SunDay",@"MonDay",@"TuesDay",@"WednesDay",@"ThusDay",@"FriDay",@"SaturDay",nil];
-	self.Title = @"Add Delete Data Example";
+	//self.Title = @"Add Delete Data Example";
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(Edit:)];
 	[self.navigationItem setLeftBarButtonItem:addButton];
     [super viewDidLoad];
@@ -79,7 +79,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *CellIdentifier = @"TableCCell";
+    static NSString *CellIdentifier = @"TableCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {

@@ -37,6 +37,9 @@
 {
     [super viewDidLoad];
     
+
+    
+    
     self.capturedImages = [[NSMutableArray alloc] init];
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
@@ -46,6 +49,10 @@
         [toolbarItems removeObjectAtIndex:2];
         [self.toolBar setItems:toolbarItems animated:NO];
     }
+    
+    
+    
+
     
     
     CALayer *btnLayer = [_roundedButton layer];
@@ -410,8 +417,13 @@
     cv::Scalar color = cv::Scalar(255,0,255);
     cv::drawContours(mat, contours, -1, color);
     self.globalMat = mat;
-    return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
+    
+    integer = ncont;
+    [ContourCount setText:[NSString stringWithFormat:@"%d", integer]];
+    
+    
+    return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
 -(UIImage*)threshold:(cv::Mat)mat
 {
