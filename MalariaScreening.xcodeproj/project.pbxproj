@@ -22,11 +22,11 @@
 		18F8C6C318AB574D00A21EFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A518AB574D00A21EFD /* UIKit.framework */; };
 		18F8C6CB18AB574D00A21EFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6C918AB574D00A21EFD /* InfoPlist.strings */; };
 		18F8C6CD18AB574D00A21EFD /* MalariaScreeningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */; };
-		A517087E18D3435C0027EB8F /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A517087D18D3435C0027EB8F /* opencv2.framework */; };
 		A51A997018E087D50013C38E /* AddDeleteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A51A996F18E087D50013C38E /* AddDeleteAppDelegate.m */; };
 		A5EC6C5B18DBF847006677CB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5A18DBF847006677CB /* TableViewController.m */; };
 		A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5D18DBF8AF006677CB /* TableCell.m */; };
 		E51F59CC18B1DED900ADB847 /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F59CB18B1DED900ADB847 /* CountView.m */; };
+		E5BF18EC18E08DBE00B3FE69 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1886A88C18CEC77F0091EEE7 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A517087E18D3435C0027EB8F /* opencv2.framework in Frameworks */,
+				E5BF18EC18E08DBE00B3FE69 /* opencv2.framework in Frameworks */,
 				18F8C6A418AB574D00A21EFD /* CoreGraphics.framework in Frameworks */,
 				18F8C6A618AB574D00A21EFD /* UIKit.framework in Frameworks */,
 				18F8C6A218AB574D00A21EFD /* Foundation.framework in Frameworks */,
