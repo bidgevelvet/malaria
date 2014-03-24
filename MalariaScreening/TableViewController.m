@@ -24,6 +24,138 @@
     return self;
 }
 
+
+
+- (void)viewDidLoad {
+	dataList = [[NSMutableArray alloc] initWithObjects:@"SunDay",@"MonDay",@"TuesDay",@"WednesDay",@"ThusDay",@"FriDay",@"SaturDay",nil];
+	//self.title = @"Add Delete Data Example";
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(Edit:)];
+	[self.navigationItem setLeftBarButtonItem:addButton];
+    [super viewDidLoad];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+
+- (void)viewDidUnload {
+	
+}
+
+
+
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	int count = [dataList count];
+	if(self.editing) count++;
+	return count;
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] ;
+		cell.hidesAccessoryWhenEditing = YES;
+    }
+    int count = 0;
+	if(self.editing && indexPath.row != 0)
+		count = 1;
+	
+    if(indexPath.row == ([dataList count]) && self.editing){
+		cell.textLabel.text = @"Add Data";
+		return cell;
+	}
+	
+	cell.textLabel.text = [dataList objectAtIndex:indexPath.row];
+    return cell;
+}
+
+
+- (IBAction)AddButtonAction:(id)sender{
+	[dataList addObject:@"SaturDay"];
+	[tableView reloadData];
+}
+
+- (IBAction)DeleteButtonAction:(id)sender{
+	[dataList removeLastObject];
+	[tableView reloadData];
+}
+
+- (IBAction) Edit:(id)sender{
+	if(self.editing)
+	{
+		[super setEditing:NO animated:NO];
+		[tableView setEditing:NO animated:NO];
+		[tableView reloadData];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+		[self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+	}
+	else
+	{
+		[super setEditing:YES animated:YES];
+		[tableView setEditing:YES animated:YES];
+		[tableView reloadData];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Done"];
+		[self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
+	}
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.editing == NO || !indexPath) return UITableViewCellEditingStyleNone;
+    if (self.editing && indexPath.row == ([dataList count])) {
+		return UITableViewCellEditingStyleInsert;
+	} else {
+		return UITableViewCellEditingStyleDelete;
+	}
+    return UITableViewCellEditingStyleNone;
+}
+
+
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+    
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [dataList removeObjectAtIndex:indexPath.row];
+		[tableView reloadData];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        [dataList insertObject:@"SaturDay" atIndex:[dataList count]];
+		[tableView reloadData];
+    }
+}
+
+#pragma mark Row reordering
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
+	  toIndexPath:(NSIndexPath *)toIndexPath {
+	NSString *item = [dataList objectAtIndex:fromIndexPath.row] ;
+	[dataList removeObject:item];
+	[dataList insertObject:item atIndex:toIndexPath.row];
+	
+}
+
+
+
+
+
+/*
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,7 +221,7 @@
     
     return cell;
 }
-
+*/
 /*
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
  {

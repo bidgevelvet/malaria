@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TableViewController : UITableViewController
+@interface TableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
+    
+	IBOutlet UITableView *tableView;
+	NSMutableArray *dataList;
+}
 
+- (IBAction) Edit:(id)sender;
 
 @property (nonatomic, strong) NSArray *Title;
 @property (nonatomic, strong) NSArray *Description;
