@@ -14,7 +14,7 @@
 @end
 
 @implementation TableViewController
-
+@synthesize Title;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
 	dataList = [[NSMutableArray alloc] initWithObjects:@"SunDay",@"MonDay",@"TuesDay",@"WednesDay",@"ThusDay",@"FriDay",@"SaturDay",nil];
-	//self.title = @"Add Delete Data Example";
+	self.Title = @"Add Delete Data Example";
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(Edit:)];
 	[self.navigationItem setLeftBarButtonItem:addButton];
     [super viewDidLoad];
@@ -61,10 +61,25 @@
 }
 
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"TableCell";
+    TableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier           forIndexPath:indexPath];
     
-    static NSString *CellIdentifier = @"Cell";
+    // Configure the cell...
+    int row = [indexPath row];
+    
+    cell.TitleLabel.text = _Title[row];
+    cell.DescriptionLabel.text = _Description[row];
+    
+    return cell;
+}*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"TableCCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -222,6 +237,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     return cell;
 }
 */
+
+
+
+
+
+
+
 /*
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
  {

@@ -388,9 +388,13 @@
 
 -(UIImage*)greyScaleImage:(cv::Mat)mat
 {
-    cv::cvtColor(mat, mat, CV_RGB2GRAY);
-//    cv::dilate(binary,binary,cv::Mat());
-//    cv::erode(binary, binary, cv::Mat());
+    //    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    //    cv::dilate(binary,binary,cv::Mat());
+    //    cv::erode(binary, binary, cv::Mat());
+    cv::Mat element(6,6,CV_8U,cv::Scalar(1));
+    
+    cv::dilate(mat, mat, element);
+    cv::erode(mat, mat, element);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
@@ -411,8 +415,13 @@
 }
 -(UIImage*)threshold:(cv::Mat)mat
 {
-    //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
+    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY, 101, 50);
+    //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
+    
+    
+    //    cv::erode(mat, mat, element);
+    //    cv::dilate(mat, mat, element);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
