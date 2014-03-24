@@ -243,14 +243,19 @@
     NSInteger width = self.finalImage.size.width;
     NSInteger height =self.finalImage.size.height;
     myScrollView.contentSize = CGSizeMake(width,height);
-    NSLog(@"width = %d",width);
-    NSLog(@"height = %d",height);
-	myScrollView.maximumZoomScale = 4.0;
-	myScrollView.minimumZoomScale = 0.75;
+    ///
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+   
+    ////
+    NSLog(@"width = %f", self.imageView.frame.size.width);
+    NSLog(@"height = %f",self.imageView.frame.size.height);
+	myScrollView.maximumZoomScale = 10.0;
+	myScrollView.minimumZoomScale = 0.25;
     [myScrollView setScrollEnabled:YES];
 	myScrollView.delegate = self;
     
     ///
+    
     [self.imageView setImage:self.finalImage];
     [myScrollView addSubview:imageView];
 

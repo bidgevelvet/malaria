@@ -103,16 +103,9 @@
                                     <segue destination="wfe-Nj-H5r" kind="modal" id="Wd7-s9-dTA"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="h9X-Sx-tda">
-                                <rect key="frame" x="12" y="-36" width="297" height="248"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hhO-Gl-Toe">
-                                        <rect key="frame" x="0.0" y="1" width="297" height="247"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
-                                </subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" id="h9X-Sx-tda">
+                                <rect key="frame" x="12" y="49" width="297" height="248"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.90007218070652173" green="0.90007218070652173" blue="0.90007218070652173" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,7 +113,6 @@
                     <connections>
                         <outlet property="Noob1" destination="0C4-35-5Dw" id="666-ui-6bU"/>
                         <outlet property="Noob2" destination="n6g-V6-huj" id="zcX-yK-DcF"/>
-                        <outlet property="imageView" destination="hhO-Gl-Toe" id="Bxt-Jx-VUG"/>
                         <outlet property="myScrollView" destination="h9X-Sx-tda" id="NI8-wK-GTn"/>
                         <outlet property="roundChoosePic" destination="V4r-6t-9Cl" id="lrn-TE-HTj"/>
                         <outlet property="roundTakePic" destination="dUm-7d-saW" id="Id7-G0-GvB"/>
