@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "UIImageCVMatConverter.h"
 @interface ViewController ()
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+//@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 @property (nonatomic, weak) IBOutlet UIToolbar *toolBar;
 
@@ -30,7 +30,7 @@
 @end
 
 @implementation ViewController
-
+@synthesize myScrollView,imageView;
 
 
 - (void)viewDidLoad
@@ -71,6 +71,17 @@
     CALayer *btnLayer6= [_Noob2 layer];
     [btnLayer6 setMasksToBounds:YES];
     [btnLayer6 setCornerRadius:5.0f];
+    
+    ///////
+
+    ////
+
+//    
+//    demoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PDF-icon.png"]];
+//    [myScrollView addSubview:demoImageView];
+//    [myScrollView setContentSize:CGSizeMake(demoImageView.frame.size.width, demoImageView.frame.size.height)];
+
+
 }
 
 
@@ -189,7 +200,13 @@
     
     [self finishAndUpdate];
 }
-
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
 
 - (void)finishAndUpdate
 {
@@ -217,6 +234,26 @@
     }
     
     self.imagePickerController = nil;
+    
+    ///// scroll
+    [myScrollView setBackgroundColor:[UIColor blackColor]];
+    [myScrollView setCanCancelContentTouches:NO];
+    myScrollView.clipsToBounds = YES;
+    myScrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    NSInteger width = self.finalImage.size.width;
+    NSInteger height =self.finalImage.size.height;
+    myScrollView.contentSize = CGSizeMake(width,height);
+    NSLog(@"width = %d",width);
+    NSLog(@"height = %d",height);
+	myScrollView.maximumZoomScale = 4.0;
+	myScrollView.minimumZoomScale = 0.75;
+    [myScrollView setScrollEnabled:YES];
+	myScrollView.delegate = self;
+    
+    ///
+    [self.imageView setImage:self.finalImage];
+    [myScrollView addSubview:imageView];
+
 }
 
 
@@ -237,9 +274,6 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     [self.capturedImages addObject:image];
-    /// make screen fit
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    ////
     
     if ([self.cameraTimer isValid])
     {
@@ -378,6 +412,10 @@
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
 }
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+	return imageView;
+}
+
 
 
 @end

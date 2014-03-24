@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate >{
+@interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate, UIScrollViewDelegate>{
     IBOutlet UILabel *showRed;
     IBOutlet UILabel *showBlue;
     IBOutlet UILabel *showGreen;
     IBOutlet UISlider *thresholdSlider;
-    
+	IBOutlet UIScrollView *myScrollView;
+	IBOutlet UIImageView *imageView;
     
 }
 
@@ -25,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *roundTakePic;
 @property (weak, nonatomic) IBOutlet UIButton *Noob1;
 @property (weak, nonatomic) IBOutlet UIButton *Noob2;
+
+@property (nonatomic, retain) IBOutlet UIScrollView *myScrollView;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
 
 -(IBAction)thresholdButton:(id)sender;
