@@ -16,8 +16,8 @@
 	IBOutlet UIScrollView *myScrollView;
 	IBOutlet UIImageView *imageView;
     
+    
 }
-
 
 
 @property (weak, nonatomic) IBOutlet UIButton *roundedButton2;
