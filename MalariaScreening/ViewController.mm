@@ -407,6 +407,7 @@
     int ncont = contours.size();
     ncont--; // subtract edge
     NSLog(@"%d",ncont);
+    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
     cv::Scalar color = cv::Scalar(255,0,255);
     cv::drawContours(mat, contours, -1, color);
     self.globalMat = mat;

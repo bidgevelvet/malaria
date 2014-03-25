@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate, UIScrollViewDelegate>{
-    IBOutlet UILabel *showRed;
+    IBOutlet UILabel *showCount;
     IBOutlet UILabel *showBlue;
     IBOutlet UILabel *showGreen;
     IBOutlet UISlider *thresholdSlider;
