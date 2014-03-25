@@ -9,17 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate, UIScrollViewDelegate>{
-    IBOutlet UILabel *ContourCount;
+    IBOutlet UILabel *showCount;
     IBOutlet UILabel *showBlue;
     IBOutlet UILabel *showGreen;
     IBOutlet UISlider *thresholdSlider;
 	IBOutlet UIScrollView *myScrollView;
 	IBOutlet UIImageView *imageView;
-    int integer;
+    
     
 }
-
-@property (weak, nonatomic) IBOutlet UILabel *ContourCount;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *roundedButton2;

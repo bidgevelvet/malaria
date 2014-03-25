@@ -55,10 +55,6 @@
                                     <action selector="findContourButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hjt-b9-y5r"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="127" minValue="0.0" maxValue="255" id="qN1-DK-Ew4">
-                                <rect key="frame" x="95" y="436" width="118" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7sK-mP-cbg">
                                 <rect key="frame" x="28" y="345" width="72" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,11 +110,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="luj-xb-qOR">
+                                <rect key="frame" x="41" y="440" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90007218070652173" green="0.90007218070652173" blue="0.90007218070652173" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="ContourCount" destination="SHm-6k-zVR" id="JrM-Aj-WyE"/>
                         <outlet property="Noob1" destination="0C4-35-5Dw" id="666-ui-6bU"/>
                         <outlet property="Noob2" destination="n6g-V6-huj" id="zcX-yK-DcF"/>
                         <outlet property="myScrollView" destination="h9X-Sx-tda" id="NI8-wK-GTn"/>
@@ -126,7 +128,7 @@
                         <outlet property="roundTakePic" destination="dUm-7d-saW" id="Id7-G0-GvB"/>
                         <outlet property="roundedButton" destination="6vJ-ci-GUe" id="jIO-mu-Kge"/>
                         <outlet property="roundedButton2" destination="7sK-mP-cbg" id="PNm-Ae-BvK"/>
-                        <outlet property="thresholdSlider" destination="qN1-DK-Ew4" id="yti-4l-7Wg"/>
+                        <outlet property="showCount" destination="luj-xb-qOR" id="vY5-Z6-vrp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

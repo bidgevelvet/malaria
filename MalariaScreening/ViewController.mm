@@ -418,9 +418,8 @@
     cv::drawContours(mat, contours, -1, color);
     self.globalMat = mat;
     
-    
-    integer = ncont;
-    [ContourCount setText:[NSString stringWithFormat:@"%d", integer]];
+    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+   
     
     
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
