@@ -79,6 +79,15 @@
     [btnLayer6 setMasksToBounds:YES];
     [btnLayer6 setCornerRadius:5.0f];
     
+    
+    CALayer *btnLayer7= [_split layer];
+    [btnLayer7 setMasksToBounds:YES];
+    [btnLayer7 setCornerRadius:5.0f];
+    
+    
+    CALayer *btnLayer8= [_greenThreshold layer];
+    [btnLayer8 setMasksToBounds:YES];
+    [btnLayer8 setCornerRadius:5.0f];
     ///////
 
     ////
@@ -353,6 +362,15 @@
 - (void)createMat:(id)sender{
     self.globalMat = [UIImageCVMatConverter cvMatFromUIImage:self.finalImage];
 }
+- (void)greenThreshold:(id)sender{
+    self.finalImage = [self greenThresholdFromMat:self.globalMat];
+    [self.imageView setImage:self.finalImage];
+}
+- (void)split:(id)sender{
+    self.finalImage = [self splitImageToChannels:self.globalMat];
+    [self.imageView setImage:self.finalImage];
+
+}
 - (NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(int)count
 {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
@@ -398,7 +416,7 @@
     //    cv::cvtColor(mat, mat, CV_RGB2GRAY);
     //    cv::dilate(binary,binary,cv::Mat());
     //    cv::erode(binary, binary, cv::Mat());
-    cv::Mat element(12,12,CV_8U,cv::Scalar(1));
+    cv::Mat element(7,7,CV_8U,cv::Scalar(1));
     cv::erode(mat, mat, element);
     cv::dilate(mat, mat, element);
     
@@ -441,7 +459,17 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
 	return imageView;
 }
+- (UIImage*)greenThresholdFromMat:(cv::Mat)mat
+{
+    self.globalMat = mat;
+    return [UIImageCVMatConverter UIImageFromCVMat:mat];
+}
 
+- (UIImage*)splitImageToChannels:(cv::Mat)mat
+{
+    self.globalMat = mat;
+    return [UIImageCVMatConverter UIImageFromCVMat:mat];
+}
 
 
 @end

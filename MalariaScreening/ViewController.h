@@ -30,9 +30,15 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *myScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
+@property (weak, nonatomic) IBOutlet UIButton *split;
+
+@property (weak, nonatomic) IBOutlet UIButton *greenThreshold;
+
 
 -(IBAction)thresholdButton:(id)sender;
 -(IBAction)findContourButton:(id)sender;
 -(IBAction)greyScaleButton:(id)sender;
 -(IBAction)createMat:(id)sender;
+-(IBAction)split:(id)sender;
+-(IBAction)greenThreshold:(id)sender;
 @end
