@@ -367,6 +367,7 @@
     [self.imageView setImage:self.finalImage];
 }
 - (void)split:(id)sender{
+    NSLog(@"%d",1);
     self.finalImage = [self splitImageToChannels:self.globalMat];
     [self.imageView setImage:self.finalImage];
 
@@ -413,12 +414,10 @@
 
 -(UIImage*)greyScaleImage:(cv::Mat)mat
 {
-    //    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+        cv::cvtColor(mat, mat, CV_RGB2GRAY);
     //    cv::dilate(binary,binary,cv::Mat());
     //    cv::erode(binary, binary, cv::Mat());
-    cv::Mat element(7,7,CV_8U,cv::Scalar(1));
-    cv::erode(mat, mat, element);
-    cv::dilate(mat, mat, element);
+    
     
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
@@ -445,7 +444,7 @@
 }
 -(UIImage*)threshold:(cv::Mat)mat
 {
-    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    //cv::cvtColor(mat, mat, CV_RGB2GRAY);
     cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 101, 50);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
@@ -461,14 +460,20 @@
 }
 - (UIImage*)greenThresholdFromMat:(cv::Mat)mat
 {
+    //closing
+    cv::Mat element(8,8,CV_8U,cv::Scalar(1));
+    cv::erode(mat, mat, element);
+    cv::dilate(mat, mat, element);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
 
 - (UIImage*)splitImageToChannels:(cv::Mat)mat
-{
-    self.globalMat = mat;
-    return [UIImageCVMatConverter UIImageFromCVMat:mat];
+{   NSLog(@"%d",1);
+    std::vector<cv::Mat> splitMat;
+    cv::split(mat, splitMat);
+    self.globalMat = splitMat[1];
+    return [UIImageCVMatConverter UIImageFromCVMat:splitMat[1]];
 }
 
 
