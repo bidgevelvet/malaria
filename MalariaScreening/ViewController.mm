@@ -435,7 +435,10 @@
     cv::Scalar color = cv::Scalar(255,0,255);
     cv::drawContours(mat, contours, -1, color);
     self.globalMat = mat;
-    
+    for(int i=0;i<contours.size();i++){
+        double d = cv::contourArea(contours[i]);
+        NSLog(@"area : %f",d);
+    }
     showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
    
     
@@ -445,7 +448,7 @@
 -(UIImage*)threshold:(cv::Mat)mat
 {
     //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 101, 50);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 301, 70);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
     
@@ -461,7 +464,10 @@
 - (UIImage*)greenThresholdFromMat:(cv::Mat)mat
 {
     //closing
-    cv::Mat element(8,8,CV_8U,cv::Scalar(1));
+    int morph_size = 10;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+
+    //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
     cv::erode(mat, mat, element);
     cv::dilate(mat, mat, element);
     self.globalMat = mat;

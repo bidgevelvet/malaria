@@ -111,10 +111,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i5H-UE-c65">
-                                <rect key="frame" x="104" y="435" width="102" height="30"/>
+                                <rect key="frame" x="196" y="439" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.96510947930000002" blue="0.13194133659999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="GreenThreshold">
+                                <state key="normal" title="closing">
                                     <color key="titleShadowColor" red="1" green="0.9882247622" blue="0.2118470073" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -122,7 +122,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5jx-lj-ymG">
-                                <rect key="frame" x="239" y="439" width="46" height="30"/>
+                                <rect key="frame" x="135" y="389" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.27919272150000002" blue="0.86460466329999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Split">
