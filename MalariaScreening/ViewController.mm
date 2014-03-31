@@ -428,17 +428,23 @@
     std::vector<std::vector<cv::Point>> contours;
     cv::findContours(mat,contours,CV_RETR_LIST,CV_CHAIN_APPROX_SIMPLE);
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
+    
+    
+    std::vector<std::vector<cv::Point>>::const_iterator it = contours.begin();
+    for(int i=0;i<contours.size();i++){
+        
+        double d = cv::contourArea(contours[i]);
+        if(d<100)contours.erase(it);
+        if(d>1000)contours.erase(it);
+        it++;
+        NSLog(@"area : %f",d);
+    }
     int ncont = contours.size();
-    ncont--; // subtract edge
     NSLog(@"%d",ncont);
     showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
     cv::Scalar color = cv::Scalar(255,0,255);
     cv::drawContours(mat, contours, -1, color);
     self.globalMat = mat;
-    for(int i=0;i<contours.size();i++){
-        double d = cv::contourArea(contours[i]);
-        NSLog(@"area : %f",d);
-    }
     showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
    
     
@@ -475,11 +481,40 @@
 }
 
 - (UIImage*)splitImageToChannels:(cv::Mat)mat
-{   NSLog(@"%d",1);
-    std::vector<cv::Mat> splitMat;
-    cv::split(mat, splitMat);
-    self.globalMat = splitMat[1];
-    return [UIImageCVMatConverter UIImageFromCVMat:splitMat[1]];
+{
+    cv::Mat originalMat = mat;
+    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 301, 70);
+    int morph_size = 10;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    cv::erode(mat, mat, element);
+    cv::dilate(mat, mat, element);
+    std::vector<std::vector<cv::Point>> contours;
+    cv::findContours(mat,contours,CV_RETR_LIST,CV_CHAIN_APPROX_SIMPLE);
+    cv::cvtColor(mat,mat,CV_GRAY2BGR);
+    
+    
+    std::vector<std::vector<cv::Point>>::const_iterator it = contours.begin();
+    for(int i=0;i<contours.size();i++){
+        
+        double d = cv::contourArea(contours[i]);
+        if(d<100)contours.erase(it);
+        if(d>1000)contours.erase(it);
+        it++;
+        NSLog(@"area : %f",d);
+    }
+    int ncont = contours.size();
+    NSLog(@"%d",ncont);
+    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+    cv::Scalar color = cv::Scalar(0,255,0);
+    cv::drawContours(originalMat, contours, -1, color);
+    self.globalMat = originalMat;
+    return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
+//    NSLog(@"%d",1);
+//    std::vector<cv::Mat> splitMat;
+//    cv::split(mat, splitMat);
+//    self.globalMat = splitMat[1];
+//    return [UIImageCVMatConverter UIImageFromCVMat:splitMat[1]];
 }
 
 
