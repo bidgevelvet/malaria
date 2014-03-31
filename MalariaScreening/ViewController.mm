@@ -226,6 +226,11 @@
 
 - (void)finishAndUpdate
 {
+    /// remove before add
+    self.imageView.image = nil;
+    [[myScrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    ///
+    
     [self dismissViewControllerAnimated:YES completion:NULL];
     
     if ([self.capturedImages count] > 0)
