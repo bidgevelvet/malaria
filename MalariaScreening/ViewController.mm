@@ -436,7 +436,7 @@
     int ncont = contours.size();
     cv::Scalar color = cv::Scalar(255,0,255);
     for(int i=0;i<contours.size();i++){
-        if(cv::contourArea(contours[i])>1000)cv::drawContours(mat, contours, i, color);
+        if(cv::contourArea(contours[i])<400)cv::drawContours(mat, contours, i, color);
         else ncont--;
     }
         
@@ -455,7 +455,7 @@
 -(UIImage*)threshold:(cv::Mat)mat
 {
     //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 301, 70);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 45);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
     
@@ -471,12 +471,13 @@
 - (UIImage*)greenThresholdFromMat:(cv::Mat)mat
 {
     //closing
-    int morph_size = 10;
+    int morph_size = 5;
     cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
 
     //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
-    cv::erode(mat, mat, element);
-    cv::dilate(mat, mat, element);
+    cv::GaussianBlur(mat, mat, cv::Size(21,21),0,0);
+//    cv::erode(mat, mat, element);
+//    cv::dilate(mat, mat, element);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
