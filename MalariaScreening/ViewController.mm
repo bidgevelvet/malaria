@@ -498,7 +498,7 @@
     int ncont = contours.size();
     cv::Scalar color = cv::Scalar(30,200,30);
     for(int i=0;i<contours.size();i++){
-        if(cv::contourArea(contours[i])>1000)cv::drawContours(originalMat, contours, i, color);
+        if(cv::contourArea(contours[i])>1000&&cv::contourArea(contours[i])<8000)cv::drawContours(originalMat, contours, i, color);
         else ncont--;
     }
     
