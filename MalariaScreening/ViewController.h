@@ -30,7 +30,7 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *myScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
-@property (weak, nonatomic) IBOutlet UIButton *split;
+@property (weak, nonatomic) IBOutlet UIButton *wbcCount;
 
 @property (weak, nonatomic) IBOutlet UIButton *greenThreshold;
 
@@ -39,6 +39,6 @@
 -(IBAction)findContourButton:(id)sender;
 -(IBAction)greyScaleButton:(id)sender;
 -(IBAction)createMat:(id)sender;
--(IBAction)split:(id)sender;
+-(IBAction)wbcCount:(id)sender;
 -(IBAction)greenThreshold:(id)sender;
 @end

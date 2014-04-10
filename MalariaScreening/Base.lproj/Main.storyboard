@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A3028" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7sK-mP-cbg">
-                                <rect key="frame" x="28" y="345" width="72" height="30"/>
+                                <rect key="frame" x="118" y="345" width="72" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="createMat">
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0C4-35-5Dw">
-                                <rect key="frame" x="41" y="389" width="47" height="30"/>
+                                <rect key="frame" x="138" y="389" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.41005946630000001" green="1" blue="0.99940132680000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Grey">
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Opl-q5-ynx">
-                                <rect key="frame" x="135" y="345" width="50" height="30"/>
+                                <rect key="frame" x="135" y="307" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,14 +122,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5jx-lj-ymG">
-                                <rect key="frame" x="135" y="389" width="46" height="30"/>
+                                <rect key="frame" x="20" y="345" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.27919272150000002" blue="0.86460466329999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Split">
+                                <state key="normal" title="wbcCount">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="split:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d7W-ax-gBs"/>
+                                    <action selector="wbcCount:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="C1t-NV-RWt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -145,7 +145,7 @@
                         <outlet property="roundedButton" destination="6vJ-ci-GUe" id="jIO-mu-Kge"/>
                         <outlet property="roundedButton2" destination="7sK-mP-cbg" id="PNm-Ae-BvK"/>
                         <outlet property="showCount" destination="luj-xb-qOR" id="vY5-Z6-vrp"/>
-                        <outlet property="split" destination="5jx-lj-ymG" id="2LD-kF-8Z2"/>
+                        <outlet property="wbcCount" destination="5jx-lj-ymG" id="sM4-db-0xp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

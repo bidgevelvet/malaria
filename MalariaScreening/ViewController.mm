@@ -80,7 +80,7 @@
     [btnLayer6 setCornerRadius:5.0f];
     
     
-    CALayer *btnLayer7= [_split layer];
+    CALayer *btnLayer7= [_wbcCount layer];
     [btnLayer7 setMasksToBounds:YES];
     [btnLayer7 setCornerRadius:5.0f];
     
@@ -371,9 +371,9 @@
     self.finalImage = [self greenThresholdFromMat:self.globalMat];
     [self.imageView setImage:self.finalImage];
 }
-- (void)split:(id)sender{
-    NSLog(@"%d",1);
-    self.finalImage = [self splitImageToChannels:self.globalMat];
+- (void)wbcCount:(id)sender{
+    self.globalMat = [UIImageCVMatConverter cvMatFromUIImage:self.finalImage];
+    self.finalImage = [self wbcCountMethod:self.globalMat];
     [self.imageView setImage:self.finalImage];
 
 }
@@ -431,12 +431,14 @@
 -(UIImage*)findContour:(cv::Mat)mat
 {
     std::vector<std::vector<cv::Point>> contours;
-    cv::findContours(mat,contours,CV_RETR_LIST,CV_CHAIN_APPROX_SIMPLE);
+    cv::findContours(mat,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_SIMPLE);
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
     int ncont = contours.size();
     cv::Scalar color = cv::Scalar(255,0,255);
     for(int i=0;i<contours.size();i++){
-        if(cv::contourArea(contours[i])<400)cv::drawContours(mat, contours, i, color);
+        NSLog(@"area %f",cv::contourArea(contours[i]));
+        if(cv::contourArea(contours[i])<1000)
+        cv::drawContours(mat, contours, i, color);
         else ncont--;
     }
         
@@ -455,7 +457,7 @@
 -(UIImage*)threshold:(cv::Mat)mat
 {
     //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 45);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 65);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
     
@@ -471,8 +473,8 @@
 - (UIImage*)greenThresholdFromMat:(cv::Mat)mat
 {
     //closing
-    int morph_size = 5;
-    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    //int morph_size = 5;
+    //cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
 
     //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
     cv::GaussianBlur(mat, mat, cv::Size(21,21),0,0);
@@ -482,23 +484,22 @@
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
 
-- (UIImage*)splitImageToChannels:(cv::Mat)mat
+- (UIImage*)wbcCountMethod:(cv::Mat)mat
 {
+    
     cv::Mat originalMat = mat;
     cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 70);
-    int morph_size = 10;
-    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
-    cv::erode(mat, mat, element);
-    cv::dilate(mat, mat, element);
+    cv::GaussianBlur(mat, mat, cv::Size(21,21),0,0);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 65);    
     std::vector<std::vector<cv::Point>> contours;
-    cv::findContours(mat,contours,CV_RETR_LIST,CV_CHAIN_APPROX_SIMPLE);
+    cv::findContours(mat,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_SIMPLE);
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
     
     int ncont = contours.size();
     cv::Scalar color = cv::Scalar(30,200,30);
     for(int i=0;i<contours.size();i++){
-        if(cv::contourArea(contours[i])>1000)cv::drawContours(originalMat, contours, i, color);
+        NSLog(@"area%f",cv::contourArea(contours[i]));
+        if(cv::contourArea(contours[i])>2000&&cv::contourArea(contours[i])<6000)cv::drawContours(originalMat, contours, i, color);
         else ncont--;
     }
     
