@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A3028" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,7 +21,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="takePhoto:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="baI-Dn-5n2"/>
+                                    <segue destination="9Jz-Yt-UNL" kind="modal" id="nqW-Q5-DTD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V4r-6t-9Cl">
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Opl-q5-ynx">
-                                <rect key="frame" x="135" y="307" width="50" height="30"/>
+                                <rect key="frame" x="130" y="307" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -135,6 +135,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90007218070652173" green="0.90007218070652173" blue="0.90007218070652173" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qFx-xe-WuF"/>
                     <connections>
                         <outlet property="Noob1" destination="0C4-35-5Dw" id="666-ui-6bU"/>
                         <outlet property="Noob2" destination="n6g-V6-huj" id="zcX-yK-DcF"/>
@@ -455,6 +456,74 @@
             </objects>
             <point key="canvasLocation" x="629" y="-479"/>
         </scene>
+        <!--View Controller - PhotoPicker-->
+        <scene sceneID="35c-ZB-aKh">
+            <objects>
+                <viewController id="ZJ5-S4-e4N" customClass="APLViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f9U-mp-6Vv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="yrR-fk-gEH">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Photo Library" id="ztv-jM-YIz">
+                                        <connections>
+                                            <action selector="showImagePickerForPhotoPicker:" destination="ZJ5-S4-e4N" id="APM-Gf-bwi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uMI-AM-xM3"/>
+                                    <barButtonItem systemItem="camera" id="SX0-fT-akz">
+                                        <connections>
+                                            <action selector="showImagePickerForCamera:" destination="ZJ5-S4-e4N" id="CCT-vw-Zbg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" id="UnL-qI-LW9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LdX-3P-vPR">
+                                <rect key="frame" x="116" y="225" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" id="8ye-qO-9s9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="PhotoPicker" id="emr-AL-MRa"/>
+                    <connections>
+                        <outlet property="imageView" destination="UnL-qI-LW9" id="qyt-oa-yxz"/>
+                        <outlet property="toolBar" destination="yrR-fk-gEH" id="dW0-0I-THC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUF-dE-FdU" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-333" y="73"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l8w-4K-5Aw">
+            <objects>
+                <navigationController id="9Jz-Yt-UNL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ro6-mS-UJh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZJ5-S4-e4N" kind="relationship" relationship="rootViewController" id="AIP-X0-9m2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dg0-5h-tTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327" y="-526"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -463,6 +532,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Wd7-s9-dTA"/>
-        <segue reference="1Hl-ho-NJ8"/>
+        <segue reference="8ye-qO-9s9"/>
     </inferredMetricsTieBreakers>
 </document>

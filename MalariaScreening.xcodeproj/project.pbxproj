@@ -23,6 +23,7 @@
 		18F8C6CB18AB574D00A21EFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F8C6C918AB574D00A21EFD /* InfoPlist.strings */; };
 		18F8C6CD18AB574D00A21EFD /* MalariaScreeningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8C6CC18AB574D00A21EFD /* MalariaScreeningTests.m */; };
 		A51A997018E087D50013C38E /* AddDeleteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A51A996F18E087D50013C38E /* AddDeleteAppDelegate.m */; };
+		A5A808A718F83BB900DC4A0A /* APLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A808A618F83BB900DC4A0A /* APLViewController.m */; };
 		A5EC6C5B18DBF847006677CB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5A18DBF847006677CB /* TableViewController.m */; };
 		A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5D18DBF8AF006677CB /* TableCell.m */; };
 		E51F59CC18B1DED900ADB847 /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F59CB18B1DED900ADB847 /* CountView.m */; };
@@ -65,6 +66,8 @@
 		A517087D18D3435C0027EB8F /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
 		A51A996E18E087D50013C38E /* AddDeleteAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeleteAppDelegate.h; sourceTree = "<group>"; };
 		A51A996F18E087D50013C38E /* AddDeleteAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeleteAppDelegate.m; sourceTree = "<group>"; };
+		A5A808A518F83BB900DC4A0A /* APLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APLViewController.h; path = ../APLViewController.h; sourceTree = "<group>"; };
+		A5A808A618F83BB900DC4A0A /* APLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APLViewController.m; path = ../APLViewController.m; sourceTree = "<group>"; };
 		A5EC6C5918DBF847006677CB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		A5EC6C5A18DBF847006677CB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A5EC6C5C18DBF8AF006677CB /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				18F8C6B718AB574D00A21EFD /* ViewController.mm */,
 				18F0A79518CEEDA700D5D4B9 /* UIImageCVMatConverter.h */,
 				18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */,
+				A5A808A518F83BB900DC4A0A /* APLViewController.h */,
+				A5A808A618F83BB900DC4A0A /* APLViewController.m */,
 				18F8C6B918AB574D00A21EFD /* Images.xcassets */,
 				18F8C6A818AB574D00A21EFD /* Supporting Files */,
 				A5EC6C5918DBF847006677CB /* TableViewController.h */,
@@ -287,6 +292,7 @@
 				E51F59CC18B1DED900ADB847 /* CountView.m in Sources */,
 				A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */,
 				18F8C6AE18AB574D00A21EFD /* main.m in Sources */,
+				A5A808A718F83BB900DC4A0A /* APLViewController.m in Sources */,
 				18F0A79718CEEDA700D5D4B9 /* UIImageCVMatConverter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
