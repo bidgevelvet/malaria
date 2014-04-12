@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180A832118F847DE00F59ADA /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180A832018F847DE00F59ADA /* OverlayView.xib */; };
 		18F0A79718CEEDA700D5D4B9 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */; };
 		18F8C6A218AB574D00A21EFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A118AB574D00A21EFD /* Foundation.framework */; };
 		18F8C6A418AB574D00A21EFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A318AB574D00A21EFD /* CoreGraphics.framework */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180A832018F847DE00F59ADA /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		1886A88C18CEC77F0091EEE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		18F0A79518CEEDA700D5D4B9 /* UIImageCVMatConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageCVMatConverter.h; sourceTree = "<group>"; };
 		18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIImageCVMatConverter.mm; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		18F8C6A718AB574D00A21EFD /* MalariaScreening */ = {
 			isa = PBXGroup;
 			children = (
+				180A832018F847DE00F59ADA /* OverlayView.xib */,
 				E51F59CA18B1DED900ADB847 /* CountView.h */,
 				E51F59CB18B1DED900ADB847 /* CountView.m */,
 				18F8C6B018AB574D00A21EFD /* AppDelegate.h */,
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F8C6BA18AB574D00A21EFD /* Images.xcassets in Resources */,
+				180A832118F847DE00F59ADA /* OverlayView.xib in Resources */,
 				18F8C6AC18AB574D00A21EFD /* InfoPlist.strings in Resources */,
 				18F8C6B518AB574D00A21EFD /* Main.storyboard in Resources */,
 			);

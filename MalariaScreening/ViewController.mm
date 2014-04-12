@@ -112,7 +112,6 @@
     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
 
-
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
 {
     if (self.imageView.isAnimating)
@@ -143,20 +142,12 @@
         [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
         self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
         imagePickerController.cameraOverlayView = self.overlayView;
-        
         self.overlayView = nil;
     }
-
-
-    
     
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
-    
 }
-
-
-#pragma mark - Toolbar actions
 
 - (IBAction)done:(id)sender
 {
@@ -172,7 +163,6 @@
 - (IBAction)takePhoto:(id)sender
 {
     [self.imagePickerController takePicture];
-
 }
 
 
@@ -276,17 +266,19 @@
     ////
     NSLog(@"width = %f", self.imageView.frame.size.width);
     NSLog(@"height = %f",self.imageView.frame.size.height);
-	myScrollView.maximumZoomScale = 5.25;
-	myScrollView.minimumZoomScale = 5.25;
-    [myScrollView setZoomScale:5.25];
-    
-    [myScrollView setScrollEnabled:YES];
-	myScrollView.delegate = self;
-    
+	   
     ///
     
     [self.imageView setImage:self.finalImage];
     [myScrollView addSubview:imageView];
+
+    ////
+    
+    myScrollView.maximumZoomScale = 5.25;
+	myScrollView.minimumZoomScale = 0.25;
+    [myScrollView setZoomScale:0.5 animated:YES];
+    [myScrollView setScrollEnabled:YES];
+	myScrollView.delegate = self;
 
 }
 
