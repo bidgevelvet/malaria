@@ -21,7 +21,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9Jz-Yt-UNL" kind="modal" id="nqW-Q5-DTD"/>
+                                    <action selector="showImagePickerForCamera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mPN-f5-rF3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V4r-6t-9Cl">
@@ -99,7 +99,7 @@
                                     <segue destination="wfe-Nj-H5r" kind="modal" id="Wd7-s9-dTA"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" id="h9X-Sx-tda">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" id="h9X-Sx-tda">
                                 <rect key="frame" x="12" y="49" width="297" height="248"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scrollView>
