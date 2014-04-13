@@ -276,8 +276,8 @@
     ////
     NSLog(@"width = %f", self.imageView.frame.size.width);
     NSLog(@"height = %f",self.imageView.frame.size.height);
-	myScrollView.maximumZoomScale = 5.25;
-	myScrollView.minimumZoomScale = 5.25;
+	myScrollView.maximumZoomScale = 1;
+	myScrollView.minimumZoomScale = 1;
     [myScrollView setZoomScale:5.25];
     
     [myScrollView setScrollEnabled:YES];
@@ -431,7 +431,7 @@
     //    cv::dilate(binary,binary,cv::Mat());
     //    cv::erode(binary, binary, cv::Mat());
     
-    
+    cv::GaussianBlur(mat, mat, cv::Size(9,9),0,0);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
@@ -445,7 +445,7 @@
     cv::Scalar color = cv::Scalar(255,0,255);
     for(int i=0;i<contours.size();i++){
         NSLog(@"area %f",cv::contourArea(contours[i]));
-        if(cv::contourArea(contours[i])<1000)
+        if(cv::contourArea(contours[i])<500)
         cv::drawContours(mat, contours, i, color);
         else ncont--;
     }
@@ -465,7 +465,7 @@
 -(UIImage*)threshold:(cv::Mat)mat
 {
     //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 65);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 50);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
     
@@ -481,13 +481,13 @@
 - (UIImage*)greenThresholdFromMat:(cv::Mat)mat
 {
     //closing
-    //int morph_size = 5;
-    //cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    int morph_size = 20;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
 
     //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
-    cv::GaussianBlur(mat, mat, cv::Size(21,21),0,0);
-//    cv::erode(mat, mat, element);
-//    cv::dilate(mat, mat, element);
+    cv::dilate(mat, mat, element);
+    cv::erode(mat, mat, element);
+    
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
@@ -497,8 +497,14 @@
     
     cv::Mat originalMat = mat;
     cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::GaussianBlur(mat, mat, cv::Size(21,21),0,0);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 65);    
+    cv::GaussianBlur(mat, mat, cv::Size(9,9),0,0);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 50);
+    int morph_size = 10;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    
+    //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
+    cv::dilate(mat, mat, element);
+    cv::erode(mat, mat, element);
     std::vector<std::vector<cv::Point>> contours;
     cv::findContours(mat,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_SIMPLE);
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
