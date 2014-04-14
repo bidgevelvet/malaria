@@ -24,7 +24,7 @@
 @property (nonatomic, weak) NSTimer *cameraTimer;
 @property (nonatomic) NSMutableArray *capturedImages;
 
-@property UIImage *finalImage;
+@property UIImage *finalImage,*temp;
 @property cv::Mat globalMat;
 
 @end
@@ -267,25 +267,25 @@
     ////
     NSLog(@"width = %f", self.imageView.frame.size.width);
     NSLog(@"height = %f",self.imageView.frame.size.height);
-	myScrollView.maximumZoomScale = 1;
-	myScrollView.minimumZoomScale = 1;
-    [myScrollView setZoomScale:5.25];
-    
-    [myScrollView setScrollEnabled:YES];
-	myScrollView.delegate = self;
-    
-    ///
-    
-    [self.imageView setImage:self.finalImage];
-    [myScrollView addSubview:imageView];
-
-    ////
-    
     myScrollView.maximumZoomScale = 5.25;
 	myScrollView.minimumZoomScale = 0.25;
     [myScrollView setZoomScale:0.5 animated:YES];
     [myScrollView setScrollEnabled:YES];
 	myScrollView.delegate = self;
+
+    ////
+    CGRect newSize = CGRectMake(640.0, 720.0, 1700.0, 1100.0);
+    // Create a new image in quartz with our new bounds and original image
+    CGImageRef tmp = CGImageCreateWithImageInRect([self.finalImage CGImage], newSize);
+    // Pump our cropped image back into a UIImage object
+    UIImage *newImage = [UIImage imageWithCGImage:tmp];
+    // Be good memory citizens and release the memory
+    CGImageRelease(tmp);
+    
+    ///
+    
+    [self.imageView setImage:newImage];
+    [myScrollView addSubview:imageView];
 
 }
 
@@ -321,6 +321,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
 -(UIColor*)pixelAtXY:(NSInteger)pointX and:(NSInteger)pointY
 {
     CGImageRef cgImage = self.finalImage.CGImage;
@@ -358,6 +359,7 @@
     UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
     return acolor;
 }
+
 
 - (void)findContourButton:(id)sender{
     self.finalImage = [self findContour:self.globalMat];
