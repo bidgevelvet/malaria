@@ -32,6 +32,7 @@
 @implementation ViewController
 @synthesize myScrollView,imageView;
 
+NSInteger srctype = 0;
 
 - (void)viewDidLoad
 {
@@ -87,29 +88,15 @@
     [btnLayer8 setMasksToBounds:YES];
     [btnLayer8 setCornerRadius:5.0f];
     ///////
-
-    ////
-
-//    
-//    demoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PDF-icon.png"]];
-//    [myScrollView addSubview:demoImageView];
-//    [myScrollView setContentSize:CGSizeMake(demoImageView.frame.size.width, demoImageView.frame.size.height)];
-
-
 }
-
-
 - (IBAction)showImagePickerForCamera:(id)sender
 {
     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
 }
-
-
 - (IBAction)showImagePickerForPhotoPicker:(id)sender
 {
     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
-
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
 {
     if (self.imageView.isAnimating)
@@ -126,90 +113,18 @@
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
     imagePickerController.sourceType = sourceType;
     imagePickerController.delegate = self;
-//    
-//    if (sourceType == UIImagePickerControllerSourceTypeCamera)
-//    {
-//        /*
-//         The user wants to use the camera interface. Set up our custom overlay view for the camera.
-//         */
-//        imagePickerController.showsCameraControls = NO;
-//        
-//        /*
-//         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
-//         */
-//        [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
-//        self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
-//        imagePickerController.cameraOverlayView = self.overlayView;
-//        self.overlayView = nil;
-//    }
+//    check source type
+   if (sourceType == UIImagePickerControllerSourceTypeCamera)
+   {
+       srctype = 1; // camera
+   }else{
+       srctype = 0; // library
+   }
     
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
-- (IBAction)done:(id)sender
-{
-    // Dismiss the camera.
-    if ([self.cameraTimer isValid])
-    {
-        [self.cameraTimer invalidate];
-    }
-    [self finishAndUpdate];
-}
-
-
-- (IBAction)takePhoto:(id)sender
-{
-    [self.imagePickerController takePicture];
-}
-
-
-- (IBAction)delayedTakePhoto:(id)sender
-{
-    // These controls can't be used until the photo has been taken
-    self.doneButton.enabled = NO;
-    self.takePictureButton.enabled = NO;
-    self.delayedPhotoButton.enabled = NO;
-    self.startStopButton.enabled = NO;
-    
-    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:5.0];
-    NSTimer *cameraTimer = [[NSTimer alloc] initWithFireDate:fireDate interval:1.0 target:self selector:@selector(timedPhotoFire:) userInfo:nil repeats:NO];
-    
-    [[NSRunLoop mainRunLoop] addTimer:cameraTimer forMode:NSDefaultRunLoopMode];
-    self.cameraTimer = cameraTimer;
-}
-
-
-- (IBAction)startTakingPicturesAtIntervals:(id)sender
-{
-    /*
-     Start the timer to take a photo every 1.5 seconds.
-     
-     CAUTION: for the purpose of this sample, we will continue to take pictures indefinitely.
-     Be aware we will run out of memory quickly.  You must decide the proper threshold number of photos allowed to take from the camera.
-     One solution to avoid memory constraints is to save each taken photo to disk rather than keeping all of them in memory.
-     In low memory situations sometimes our "didReceiveMemoryWarning" method will be called in which case we can recover some memory and keep the app running.
-     */
-    self.startStopButton.title = NSLocalizedString(@"Stop", @"Title for overlay view controller start/stop button");
-    [self.startStopButton setAction:@selector(stopTakingPicturesAtIntervals:)];
-    
-    self.doneButton.enabled = NO;
-    self.delayedPhotoButton.enabled = NO;
-    self.takePictureButton.enabled = NO;
-    
-    self.cameraTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(timedPhotoFire:) userInfo:nil repeats:YES];
-    [self.cameraTimer fire]; // Start taking pictures right away.
-}
-
-
-- (IBAction)stopTakingPicturesAtIntervals:(id)sender
-{
-    // Stop and reset the timer.
-    [self.cameraTimer invalidate];
-    self.cameraTimer = nil;
-    
-    [self finishAndUpdate];
-}
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -232,22 +147,28 @@
     
     if ([self.capturedImages count] > 0)
     {
-        if ([self.capturedImages count] == 1)
+        if (srctype==1)
         {
-            // Camera took a single picture.
-            [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
+           // [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
+            UIImage *temp = [self.capturedImages objectAtIndex:0];
+            ////
+            CGRect newSize = CGRectMake(640.0, 720.0, 1700.0, 1100.0);
+            // Create a new image in quartz with our new bounds and original image
+            CGImageRef tmp = CGImageCreateWithImageInRect([temp CGImage], newSize);
+            // Pump our cropped image back into a UIImage object
+            UIImage *newImage = [UIImage imageWithCGImage:tmp];
+            // Be good memory citizens and release the memory
+            CGImageRelease(tmp);
+            [self.imageView setImage:newImage];
+            self.finalImage = newImage;
+            // save to lib --> need to be remove
+            UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil);
+            srctype = 0;
+        }else{
+            self.finalImage = [self.capturedImages objectAtIndex:0];
+            srctype = 0;
         }
-        else
-        {
-            // Camera took multiple pictures; use the list of images for animation.
-            self.imageView.animationImages = self.capturedImages;
-            self.imageView.animationDuration = 5.0;    // Show each captured photo for 5 seconds.
-            self.imageView.animationRepeatCount = 0;   // Animate forever (show all photos).
-            [self.imageView startAnimating];
-        }
-        
         // To be ready to start again, clear the captured images array.
-        self.finalImage = [self.capturedImages objectAtIndex:0];
         [self.capturedImages removeAllObjects];
     }
     
@@ -263,41 +184,19 @@
     myScrollView.contentSize = CGSizeMake(width,height);
     ///
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-   
     ////
     NSLog(@"width = %f", self.imageView.frame.size.width);
     NSLog(@"height = %f",self.imageView.frame.size.height);
-    myScrollView.maximumZoomScale = 5.25;
+    myScrollView.maximumZoomScale = 6;
 	myScrollView.minimumZoomScale = 0.25;
     [myScrollView setZoomScale:0.5 animated:YES];
     [myScrollView setScrollEnabled:YES];
 	myScrollView.delegate = self;
-
-    ////
-    CGRect newSize = CGRectMake(640.0, 720.0, 1700.0, 1100.0);
-    // Create a new image in quartz with our new bounds and original image
-    CGImageRef tmp = CGImageCreateWithImageInRect([self.finalImage CGImage], newSize);
-    // Pump our cropped image back into a UIImage object
-    UIImage *newImage = [UIImage imageWithCGImage:tmp];
-    // Be good memory citizens and release the memory
-    CGImageRelease(tmp);
-    
     ///
-    
-    [self.imageView setImage:newImage];
+    [self.imageView setImage:self.finalImage];
     [myScrollView addSubview:imageView];
 
 }
-
-
-#pragma mark - Timer
-
-// Called by the timer to take a picture.
-- (void)timedPhotoFire:(NSTimer *)timer
-{
-    [self.imagePickerController takePicture];
-}
-
 
 #pragma mark - UIImagePickerControllerDelegate
 
