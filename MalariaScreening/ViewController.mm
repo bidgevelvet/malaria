@@ -219,7 +219,10 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
-
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 - (void)finishAndUpdate
 {
     /// remove before add
