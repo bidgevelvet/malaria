@@ -44,16 +44,14 @@
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        // There is not a camera on this device, so don't show the camera button.
-        NSMutableArray *toolbarItems = [self.toolBar.items mutableCopy];
-        [toolbarItems removeObjectAtIndex:2];
-        [self.toolBar setItems:toolbarItems animated:NO];
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Camera not found"
+                                                              message:@"if click take photo, it will lldb"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
     }
-    
-    
-    
-
-    
     
     CALayer *btnLayer = [_roundedButton layer];
     [btnLayer setMasksToBounds:YES];
@@ -128,22 +126,22 @@
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
     imagePickerController.sourceType = sourceType;
     imagePickerController.delegate = self;
-    
-    if (sourceType == UIImagePickerControllerSourceTypeCamera)
-    {
-        /*
-         The user wants to use the camera interface. Set up our custom overlay view for the camera.
-         */
-        imagePickerController.showsCameraControls = NO;
-        
-        /*
-         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
-         */
-        [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
-        self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
-        imagePickerController.cameraOverlayView = self.overlayView;
-        self.overlayView = nil;
-    }
+//    
+//    if (sourceType == UIImagePickerControllerSourceTypeCamera)
+//    {
+//        /*
+//         The user wants to use the camera interface. Set up our custom overlay view for the camera.
+//         */
+//        imagePickerController.showsCameraControls = NO;
+//        
+//        /*
+//         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
+//         */
+//        [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
+//        self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
+//        imagePickerController.cameraOverlayView = self.overlayView;
+//        self.overlayView = nil;
+//    }
     
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
@@ -219,7 +217,10 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
-
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 - (void)finishAndUpdate
 {
     /// remove before add
