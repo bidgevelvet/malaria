@@ -465,7 +465,7 @@
 -(UIImage*)threshold:(cv::Mat)mat
 {
     //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 50);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 70);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
     
@@ -496,10 +496,8 @@
 {
     
     cv::Mat originalMat = mat;
-    cv::vector<cv::Mat> layers;
-    split(mat, layers);
-    mat = layers[1];
-    //cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    
+    cv::cvtColor(mat, mat, CV_RGB2GRAY);
     cv::GaussianBlur(mat, mat, cv::Size(9,9),0,0);
     cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 50);
     int morph_size = 10;
@@ -516,7 +514,7 @@
     cv::Scalar color = cv::Scalar(30,200,30);
     for(int i=0;i<contours.size();i++){
         NSLog(@"area%f",cv::contourArea(contours[i]));
-        if(cv::contourArea(contours[i])>2000&&cv::contourArea(contours[i])<6000)cv::drawContours(originalMat, contours, i, color);
+        if(cv::contourArea(contours[i])>2000&&cv::contourArea(contours[i])<7000)cv::drawContours(originalMat, contours, i, color);
         else ncont--;
     }
     
