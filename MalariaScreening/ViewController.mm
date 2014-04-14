@@ -424,8 +424,10 @@
 }
 
 -(UIImage*)greyScaleImage:(cv::Mat)mat
-{
-        cv::cvtColor(mat, mat, CV_RGB2GRAY);
+{   cv::vector<cv::Mat> layers;
+    split(mat, layers);
+    mat = layers[1];
+    //    cv::cvtColor(mat, mat, CV_RGB2GRAY);
     //    cv::dilate(binary,binary,cv::Mat());
     //    cv::erode(binary, binary, cv::Mat());
     
@@ -494,7 +496,10 @@
 {
     
     cv::Mat originalMat = mat;
-    cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    cv::vector<cv::Mat> layers;
+    split(mat, layers);
+    mat = layers[1];
+    //cv::cvtColor(mat, mat, CV_RGB2GRAY);
     cv::GaussianBlur(mat, mat, cv::Size(9,9),0,0);
     cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 50);
     int morph_size = 10;
