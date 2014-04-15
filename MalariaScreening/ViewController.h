@@ -11,6 +11,8 @@
 @interface ViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate, UIScrollViewDelegate>{
     IBOutlet UILabel *showCount;
     IBOutlet UILabel *showCount2;
+    IBOutlet UILabel *showSum;
+    IBOutlet UILabel *showSum2;
     IBOutlet UILabel *showBlue;
     IBOutlet UILabel *showGreen;
     IBOutlet UISlider *thresholdSlider;

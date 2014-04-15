@@ -104,14 +104,21 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scrollView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WBCcount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="luj-xb-qOR">
-                                <rect key="frame" x="6" y="439" width="129" height="21"/>
+                                <rect key="frame" x="6" y="431" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mjg-fY-uMa">
+                                <rect key="frame" x="6" y="453" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pcount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7WA-lq-Ni3">
-                                <rect key="frame" x="184" y="439" width="129" height="21"/>
+                                <rect key="frame" x="184" y="432" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.092572150376972528" blue="0.21399317283781916" alpha="1" colorSpace="calibratedRGB"/>
@@ -139,6 +146,13 @@
                                     <action selector="wbcCount:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="C1t-NV-RWt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ytq-h0-oAy">
+                                <rect key="frame" x="184" y="453" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90007218070652173" green="0.90007218070652173" blue="0.90007218070652173" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -154,6 +168,8 @@
                         <outlet property="roundedButton2" destination="7sK-mP-cbg" id="PNm-Ae-BvK"/>
                         <outlet property="showCount" destination="luj-xb-qOR" id="vY5-Z6-vrp"/>
                         <outlet property="showCount2" destination="7WA-lq-Ni3" id="xRf-ao-cFO"/>
+                        <outlet property="showSum" destination="Mjg-fY-uMa" id="gRM-5t-tuO"/>
+                        <outlet property="showSum2" destination="Ytq-h0-oAy" id="zgb-wj-iLl"/>
                         <outlet property="wbcCount" destination="5jx-lj-ymG" id="sM4-db-0xp"/>
                     </connections>
                 </viewController>

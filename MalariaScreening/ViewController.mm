@@ -338,6 +338,8 @@ NSInteger srctype = 0;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
 }
+
+int def1 = 0;
 -(UIImage*)findContour:(cv::Mat)mat
 {
     std::vector<std::vector<cv::Point>> contours;
@@ -351,7 +353,10 @@ NSInteger srctype = 0;
         cv::drawContours(mat, contours, i, color);
         else ncont--;
     }
-        
+    
+    
+    int nsum2 = def1+ncont;
+    def1 = nsum2;
     
     NSLog(@"%d",ncont);
     showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
@@ -360,7 +365,7 @@ NSInteger srctype = 0;
     self.globalMat = mat;
     showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
    
-    
+    showSum2.text = [NSString stringWithFormat:@"count:%d",nsum2];
     
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
@@ -393,7 +398,7 @@ NSInteger srctype = 0;
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
-
+int def = 0;
 - (UIImage*)wbcCountMethod:(cv::Mat)mat
 {
     
@@ -421,13 +426,18 @@ NSInteger srctype = 0;
         else ncont--;
     }
     
+    int nsum = def+ncont;
+    def = nsum;
     
     NSLog(@"%d",ncont);
     showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
-    
-    
     self.globalMat = originalMat;
     showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+    
+    showSum.text = [NSString stringWithFormat:@"count:%d",nsum];
+    
+    
+    
     return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
 }
 
