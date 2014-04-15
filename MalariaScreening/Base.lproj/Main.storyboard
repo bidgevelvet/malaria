@@ -103,15 +103,22 @@
                                 <rect key="frame" x="12" y="49" width="297" height="248"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="luj-xb-qOR">
-                                <rect key="frame" x="41" y="439" width="129" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WBCcount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="luj-xb-qOR">
+                                <rect key="frame" x="6" y="439" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pcount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7WA-lq-Ni3">
+                                <rect key="frame" x="184" y="439" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.092572150376972528" blue="0.21399317283781916" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i5H-UE-c65">
-                                <rect key="frame" x="196" y="439" width="102" height="30"/>
+                                <rect key="frame" x="14" y="389" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.96510947930000002" blue="0.13194133659999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="closing">
@@ -146,6 +153,7 @@
                         <outlet property="roundedButton" destination="6vJ-ci-GUe" id="jIO-mu-Kge"/>
                         <outlet property="roundedButton2" destination="7sK-mP-cbg" id="PNm-Ae-BvK"/>
                         <outlet property="showCount" destination="luj-xb-qOR" id="vY5-Z6-vrp"/>
+                        <outlet property="showCount2" destination="7WA-lq-Ni3" id="xRf-ao-cFO"/>
                         <outlet property="wbcCount" destination="5jx-lj-ymG" id="sM4-db-0xp"/>
                     </connections>
                 </viewController>

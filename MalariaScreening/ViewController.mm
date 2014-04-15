@@ -354,11 +354,11 @@ NSInteger srctype = 0;
         
     
     NSLog(@"%d",ncont);
-    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+    showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
     
     
     self.globalMat = mat;
-    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+    showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
    
     
     
