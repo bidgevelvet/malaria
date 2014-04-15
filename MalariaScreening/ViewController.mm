@@ -416,7 +416,8 @@ NSInteger srctype = 0;
     cv::Scalar color = cv::Scalar(30,200,30);
     for(int i=0;i<contours.size();i++){
         NSLog(@"area%f",cv::contourArea(contours[i]));
-        if(cv::contourArea(contours[i])>2000&&cv::contourArea(contours[i])<7000)cv::drawContours(originalMat, contours, i, color);
+        if(cv::contourArea(contours[i])>400&&cv::contourArea(contours[i])<2000)cv::drawContours(originalMat, contours, i, color);
+        else if(cv::contourArea(contours[i])>=2000&&cv::contourArea(contours[i])<4000){cv::drawContours(originalMat,contours,i,cv::Scalar(0,0,255)); ncont++;}
         else ncont--;
     }
     
