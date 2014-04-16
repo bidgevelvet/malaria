@@ -333,7 +333,7 @@ NSInteger srctype = 0;
     //    cv::dilate(binary,binary,cv::Mat());
     //    cv::erode(binary, binary, cv::Mat());
     
-    cv::GaussianBlur(mat, mat, cv::Size(9,9),0,0);
+    //cv::GaussianBlur(mat, mat, cv::Size(1,1),0,0);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
@@ -347,10 +347,15 @@ int def1 = 0;
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
     int ncont = contours.size();
     cv::Scalar color = cv::Scalar(255,0,255);
+    Boolean atEdge;
     for(int i=0;i<contours.size();i++){
+        atEdge = false;
         NSLog(@"area %f",cv::contourArea(contours[i]));
-        if(cv::contourArea(contours[i])<500)
-        cv::drawContours(mat, contours, i, color);
+        if(cv::contourArea(contours[i])<60){
+          
+            cv::drawContours(mat, contours, i, color);
+           
+        }
         else ncont--;
     }
     
@@ -372,7 +377,7 @@ int def1 = 0;
 -(UIImage*)threshold:(cv::Mat)mat
 {
     //cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 70);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 70);
     //cv::threshold(mat,mat,thresholdSlider.value,255,cv::THRESH_BINARY);
     
     
@@ -406,7 +411,7 @@ int def = 0;
     
     cv::cvtColor(mat, mat, CV_RGB2GRAY);
     cv::GaussianBlur(mat, mat, cv::Size(9,9),0,0);
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 801, 50);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 50);
     int morph_size = 10;
     cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
     
