@@ -352,9 +352,40 @@ int def1 = 0;
         atEdge = false;
         NSLog(@"area %f",cv::contourArea(contours[i]));
         if(cv::contourArea(contours[i])<60){
-          
+            for(int j =1;j<1699;j++){cv::Point point = cv::Point(j,1);
+                if(cv::pointPolygonTest(contours[i], point, false)==0||cv::pointPolygonTest(contours[i], point, false)==1){
+                    atEdge = true;
+                    NSLog(@"area %s","TRUE 1");
+                    break;
+                }
+            }
+            if (atEdge==false)
+            for(int j =1;j<1699;j++){cv::Point point = cv::Point(j,1098);
+                if(cv::pointPolygonTest(contours[i], point, false)==0||cv::pointPolygonTest(contours[i], point, false)==1){
+                    atEdge = true;
+                    NSLog(@"area %s","TRUE 2");
+                    break;
+                }
+            }
+            if (atEdge==false)
+            for(int j =1;j<1099;j++){cv::Point point = cv::Point(1,j);
+                if(cv::pointPolygonTest(contours[i], point, false)==0||cv::pointPolygonTest(contours[i], point, false)==1){
+                    atEdge = true;
+                    NSLog(@"area %s","TRUE 3");
+                    break;
+                }
+            }
+            if (atEdge==false)
+            for(int j =1;j<1099;j++){cv::Point point = cv::Point(1698,j);
+                if(cv::pointPolygonTest(contours[i], point, false)==0||cv::pointPolygonTest(contours[i], point, false)==1){
+                    atEdge = true;
+                    NSLog(@"area %s","TRUE 4");
+                    break;
+                }
+            }
+            if(atEdge==false)
             cv::drawContours(mat, contours, i, color);
-           
+            else ncont--;
         }
         else ncont--;
     }
