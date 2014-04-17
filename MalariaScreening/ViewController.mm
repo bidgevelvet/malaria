@@ -87,6 +87,15 @@ NSInteger srctype = 0;
     CALayer *btnLayer8= [_greenThreshold layer];
     [btnLayer8 setMasksToBounds:YES];
     [btnLayer8 setCornerRadius:5.0f];
+    
+    CALayer *btnLayer9= [_reset layer];
+    [btnLayer9 setMasksToBounds:YES];
+    [btnLayer9 setCornerRadius:5.0f];
+    
+    CALayer *btnLayer10= [_resetPara layer];
+    [btnLayer10 setMasksToBounds:YES];
+    [btnLayer10 setCornerRadius:5.0f];
+    
     ///////
 }
 - (IBAction)showImagePickerForCamera:(id)sender
@@ -477,6 +486,18 @@ int def = 0;
     return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
 }
 
+- (IBAction)resetWBC:(id)sender {
+    showCount.text = [NSString stringWithFormat:@"count:%d",0];
+    showSum.text = [NSString stringWithFormat:@"count:%d",0];
+    def = 0;
+}
+
+
+- (IBAction)resetPara:(id)sender {
+    showCount2.text = [NSString stringWithFormat:@"count:%d",0];
+    showSum2.text = [NSString stringWithFormat:@"count:%d",0];
+    def1 = 0;
+}
 
 //    std::vector<cv::Mat> splitMat;
 //    cv::split(mat, splitMat);

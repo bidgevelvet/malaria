@@ -22,6 +22,8 @@
     
 }
 
+@property (weak, nonatomic) IBOutlet UIButton *reset;
+@property (weak, nonatomic) IBOutlet UIButton *resetPara;
 
 @property (weak, nonatomic) IBOutlet UIButton *roundedButton2;
 @property (weak, nonatomic) IBOutlet UIButton *roundedButton;

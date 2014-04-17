@@ -153,6 +153,26 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3bC-e7-b8h">
+                                <rect key="frame" x="6" y="11" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ResetWBC">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetWBC:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ieN-oZ-18l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Eaq-vU-TzZ">
+                                <rect key="frame" x="242" y="16" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ResetPara">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPara:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Knm-RD-xLk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90007218070652173" green="0.90007218070652173" blue="0.90007218070652173" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -162,6 +182,8 @@
                         <outlet property="Noob2" destination="n6g-V6-huj" id="zcX-yK-DcF"/>
                         <outlet property="greenThreshold" destination="i5H-UE-c65" id="FyW-zM-Eb1"/>
                         <outlet property="myScrollView" destination="h9X-Sx-tda" id="NI8-wK-GTn"/>
+                        <outlet property="reset" destination="3bC-e7-b8h" id="7bL-30-15v"/>
+                        <outlet property="resetPara" destination="Eaq-vU-TzZ" id="vUp-vx-Fog"/>
                         <outlet property="roundChoosePic" destination="V4r-6t-9Cl" id="lrn-TE-HTj"/>
                         <outlet property="roundTakePic" destination="dUm-7d-saW" id="Id7-G0-GvB"/>
                         <outlet property="roundedButton" destination="6vJ-ci-GUe" id="jIO-mu-Kge"/>
