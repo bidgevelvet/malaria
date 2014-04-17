@@ -15,6 +15,7 @@
     IBOutlet UILabel *showSum2;
     IBOutlet UILabel *showBlue;
     IBOutlet UILabel *showGreen;
+    IBOutlet UILabel *showResult;
     IBOutlet UISlider *thresholdSlider;
 	IBOutlet UIScrollView *myScrollView;
 	IBOutlet UIImageView *imageView;

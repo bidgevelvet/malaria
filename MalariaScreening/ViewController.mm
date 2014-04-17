@@ -412,6 +412,11 @@ int def1 = 0;
    
     showSum2.text = [NSString stringWithFormat:@"count:%d",nsum2];
     
+    if (nsum<200 && nsum2<10) {
+        showResult.text = [NSString stringWithFormat:@"Negative"];
+    }
+    else showResult.text = [NSString stringWithFormat:@"Positive"];
+    
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
 -(UIImage*)threshold:(cv::Mat)mat
@@ -444,6 +449,7 @@ int def1 = 0;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
 int def = 0;
+int nsum;
 - (UIImage*)wbcCountMethod:(cv::Mat)mat
 {
     
@@ -480,7 +486,6 @@ int def = 0;
     showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
     
     showSum.text = [NSString stringWithFormat:@"count:%d",nsum];
-    
     
     
     return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
