@@ -317,7 +317,7 @@ int def1 = 0;
     cv::vector<cv::Mat> layers;
     split(mat, layers);
     mat = layers[1];
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 60);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 65);
     int morph_size = 20;
     cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
     
