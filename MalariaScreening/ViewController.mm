@@ -292,47 +292,8 @@ NSInteger srctype = 0;
     self.globalMat = [UIImageCVMatConverter cvMatFromUIImage:self.finalImage];
     self.finalImage = [self wbcCountMethod:self.globalMat];
     [self.imageView setImage:self.finalImage];
+}
 
-}
-- (NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(int)count
-{
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
-    
-    // First get the image into your data buffer
-    CGImageRef imageRef = [image CGImage];
-    NSUInteger width = CGImageGetWidth(imageRef);
-    NSUInteger height = CGImageGetHeight(imageRef);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    unsigned char *rawData = (unsigned char*) calloc(height * width * 4, sizeof(unsigned char));
-    NSUInteger bytesPerPixel = 4;
-    NSUInteger bytesPerRow = bytesPerPixel * width;
-    NSUInteger bitsPerComponent = 8;
-    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
-                                                 bitsPerComponent, bytesPerRow, colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
-    CGContextRelease(context);
-    
-    // Now your rawData contains the image data in the RGBA8888 pixel format.
-    int byteIndex = (bytesPerRow * yy) + xx * bytesPerPixel;
-    for (int ii = 0 ; ii < count ; ++ii)
-    {
-        CGFloat red   = (rawData[byteIndex]     * 1.0) / 255.0;
-        CGFloat green = (rawData[byteIndex + 1] * 1.0) / 255.0;
-        CGFloat blue  = (rawData[byteIndex + 2] * 1.0) / 255.0;
-        CGFloat alpha = (rawData[byteIndex + 3] * 1.0) / 255.0;
-        byteIndex += 4;
-        NSLog(@"pixel count %i",ii);
-        UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        [result addObject:acolor];
-    }
-    
-    free(rawData);
-    NSLog(@"%@",result);
-    return result;
-}
 
 -(UIImage*)greyScaleImage:(cv::Mat)mat
 {   cv::vector<cv::Mat> layers;
@@ -351,6 +312,18 @@ NSInteger srctype = 0;
 int def1 = 0;
 -(UIImage*)findContour:(cv::Mat)mat
 {
+    cv::Mat originalMat = mat;
+    cv::vector<cv::Mat> layers;
+    split(mat, layers);
+    mat = layers[1];
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 70);
+    int morph_size = 20;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    
+    //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
+    cv::dilate(mat, mat, element);
+    cv::erode(mat, mat, element);
+    
     std::vector<std::vector<cv::Point>> contours;
     cv::findContours(mat,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_SIMPLE);
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
@@ -393,7 +366,7 @@ int def1 = 0;
                 }
             }
             if(atEdge==false)
-            cv::drawContours(mat, contours, i, color);
+            cv::drawContours(originalMat, contours, i, color);
             else ncont--;
         }
         else ncont--;
@@ -407,7 +380,7 @@ int def1 = 0;
     showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
     
     
-    self.globalMat = mat;
+    self.globalMat = originalMat;
     showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
    
     showSum2.text = [NSString stringWithFormat:@"count:%d",nsum2];
@@ -417,7 +390,7 @@ int def1 = 0;
     }
     else showResult.text = [NSString stringWithFormat:@"Positive"];
     
-    return [UIImageCVMatConverter UIImageFromCVMat:mat];
+    return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
 }
 -(UIImage*)threshold:(cv::Mat)mat
 {
