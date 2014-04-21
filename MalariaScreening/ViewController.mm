@@ -270,6 +270,7 @@ NSInteger srctype = 0;
 
 
 - (void)findContourButton:(id)sender{
+    self.globalMat = [UIImageCVMatConverter cvMatFromUIImage:self.finalImage];
     self.finalImage = [self findContour:self.globalMat];
     [self.imageView setImage:self.finalImage];
 }
@@ -316,7 +317,7 @@ int def1 = 0;
     cv::vector<cv::Mat> layers;
     split(mat, layers);
     mat = layers[1];
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 70);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 60);
     int morph_size = 20;
     cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
     
@@ -333,7 +334,7 @@ int def1 = 0;
     for(int i=0;i<contours.size();i++){
         atEdge = false;
         NSLog(@"area %f",cv::contourArea(contours[i]));
-        if(cv::contourArea(contours[i])<60){
+        if(cv::contourArea(contours[i])<60&&cv::contourArea(contours[i])>5){
             for(int j =1;j<1699;j++){cv::Point point = cv::Point(j,1);
                 if(cv::pointPolygonTest(contours[i], point, false)==0||cv::pointPolygonTest(contours[i], point, false)==1){
                     atEdge = true;
