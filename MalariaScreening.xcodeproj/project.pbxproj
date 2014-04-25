@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180A832118F847DE00F59ADA /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180A832018F847DE00F59ADA /* OverlayView.xib */; };
 		18F0A79718CEEDA700D5D4B9 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */; };
 		18F8C6A218AB574D00A21EFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A118AB574D00A21EFD /* Foundation.framework */; };
 		18F8C6A418AB574D00A21EFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8C6A318AB574D00A21EFD /* CoreGraphics.framework */; };
@@ -27,7 +26,6 @@
 		A5A808A718F83BB900DC4A0A /* APLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A808A618F83BB900DC4A0A /* APLViewController.m */; };
 		A5EC6C5B18DBF847006677CB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5A18DBF847006677CB /* TableViewController.m */; };
 		A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C5D18DBF8AF006677CB /* TableCell.m */; };
-		E51F59CC18B1DED900ADB847 /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F59CB18B1DED900ADB847 /* CountView.m */; };
 		E5BF18EC18E08DBE00B3FE69 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1886A88C18CEC77F0091EEE7 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		180A832018F847DE00F59ADA /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		1886A88C18CEC77F0091EEE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		18F0A79518CEEDA700D5D4B9 /* UIImageCVMatConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageCVMatConverter.h; sourceTree = "<group>"; };
 		18F0A79618CEEDA700D5D4B9 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIImageCVMatConverter.mm; sourceTree = "<group>"; };
@@ -74,8 +71,6 @@
 		A5EC6C5A18DBF847006677CB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A5EC6C5C18DBF8AF006677CB /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		A5EC6C5D18DBF8AF006677CB /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
-		E51F59CA18B1DED900ADB847 /* CountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountView.h; path = ../CountView.h; sourceTree = "<group>"; };
-		E51F59CB18B1DED900ADB847 /* CountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountView.m; path = ../CountView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +133,6 @@
 		18F8C6A718AB574D00A21EFD /* MalariaScreening */ = {
 			isa = PBXGroup;
 			children = (
-				180A832018F847DE00F59ADA /* OverlayView.xib */,
-				E51F59CA18B1DED900ADB847 /* CountView.h */,
-				E51F59CB18B1DED900ADB847 /* CountView.m */,
 				18F8C6B018AB574D00A21EFD /* AppDelegate.h */,
 				18F8C6B118AB574D00A21EFD /* AppDelegate.m */,
 				18F8C6B318AB574D00A21EFD /* Main.storyboard */,
@@ -268,7 +260,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F8C6BA18AB574D00A21EFD /* Images.xcassets in Resources */,
-				180A832118F847DE00F59ADA /* OverlayView.xib in Resources */,
 				18F8C6AC18AB574D00A21EFD /* InfoPlist.strings in Resources */,
 				18F8C6B518AB574D00A21EFD /* Main.storyboard in Resources */,
 			);
@@ -293,7 +284,6 @@
 				A51A997018E087D50013C38E /* AddDeleteAppDelegate.m in Sources */,
 				A5EC6C5B18DBF847006677CB /* TableViewController.m in Sources */,
 				18F8C6B218AB574D00A21EFD /* AppDelegate.m in Sources */,
-				E51F59CC18B1DED900ADB847 /* CountView.m in Sources */,
 				A5EC6C5E18DBF8AF006677CB /* TableCell.m in Sources */,
 				18F8C6AE18AB574D00A21EFD /* main.m in Sources */,
 				A5A808A718F83BB900DC4A0A /* APLViewController.m in Sources */,

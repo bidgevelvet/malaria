@@ -275,24 +275,28 @@ NSInteger srctype = 0;
 int def1 = 0;
 -(UIImage*)findContour:(cv::Mat)mat
 {
+    
     cv::Mat originalMat = mat;
 //    cv::vector<cv::Mat> layers;
 //    split(mat, layers);
 //    mat = layers[1];
+    //change to greyscale
     cv::cvtColor(mat, mat, CV_RGB2GRAY);
+    //perform threshold
     cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 65);
+    //opening to join scattered pieces of contours
     int morph_size = 20;
     cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
-    
-    //cv::Mat element(8,8,CV_8U,cv::Scalar(1));
     cv::dilate(mat, mat, element);
     cv::erode(mat, mat, element);
-    
+    //count contours
     std::vector<std::vector<cv::Point>> contours;
     cv::findContours(mat,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_SIMPLE);
+    //change back to rgb
     cv::cvtColor(mat,mat,CV_GRAY2BGR);
     int ncont = contours.size();
     cv::Scalar color = cv::Scalar(255,0,255);
+    //cut out the contours that are at the edge
     Boolean atEdge;
     for(int i=0;i<contours.size();i++){
         atEdge = false;
@@ -440,12 +444,6 @@ int nsum;
     showSum2.text = [NSString stringWithFormat:@"count:%d",0];
     def1 = 0;
 }
-
-//    std::vector<cv::Mat> splitMat;
-//    cv::split(mat, splitMat);
-//    self.globalMat = splitMat[1];
-//    return [UIImageCVMatConverter UIImageFromCVMat:splitMat[1]];
-    
 
 
 
