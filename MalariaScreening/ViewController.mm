@@ -230,44 +230,6 @@ NSInteger srctype = 0;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
--(UIColor*)pixelAtXY:(NSInteger)pointX and:(NSInteger)pointY
-{
-    CGImageRef cgImage = self.finalImage.CGImage;
-    NSUInteger width = CGImageGetWidth(cgImage);
-    NSUInteger height = CGImageGetHeight(cgImage);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    int bytesPerPixel = 4;
-    int bytesPerRow = bytesPerPixel * 1;
-    NSUInteger bitsPerComponent = 8;
-    unsigned char pixelData[4] = { 0, 0, 0, 0 };
-    CGContextRef context = CGBitmapContextCreate(pixelData,
-                                                 1,
-                                                 1,
-                                                 bitsPerComponent,
-                                                 bytesPerRow,
-                                                 colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
-    CGContextSetBlendMode(context, kCGBlendModeCopy);
-    
-    // Draw the pixel we are interested in onto the bitmap context
-    CGContextTranslateCTM(context, -pointX, -pointY);
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, (CGFloat)width, (CGFloat)height), cgImage);
-    CGContextRelease(context);
-    
-    // Convert color values [0..255] to floats [0.0..1.0]
-    CGFloat red   = (CGFloat)pixelData[0] / 255.0f;
-    CGFloat green = (CGFloat)pixelData[1] / 255.0f;
-    CGFloat blue  = (CGFloat)pixelData[2] / 255.0f;
-    CGFloat alpha = (CGFloat)pixelData[3] / 255.0f;
-    NSLog(@"red = %f",red);
-    NSLog(@"green = %f",green);
-    NSLog(@"blue = %f",blue);
-    //create and return UIColor
-    UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-    return acolor;
-}
-
 
 - (void)findContourButton:(id)sender{
     self.globalMat = [UIImageCVMatConverter cvMatFromUIImage:self.finalImage];
