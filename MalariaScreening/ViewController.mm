@@ -259,34 +259,45 @@ NSInteger srctype = 0;
 
 
 -(UIImage*)greyScaleImage:(cv::Mat)mat
-{   cv::vector<cv::Mat> layers;
-    split(mat, layers);
-    mat = layers[1];
-    //    cv::cvtColor(mat, mat, CV_RGB2GRAY);
-    //    cv::dilate(binary,binary,cv::Mat());
-    //    cv::erode(binary, binary, cv::Mat());
-    
-    //cv::GaussianBlur(mat, mat, cv::Size(1,1),0,0);
+{   cv::Mat mask;
+    cv::inRange(mat,cv::Scalar(105,120,130,0),cv::Scalar(140,160,170,255),mask);
+    //cv::inRange(mat,cv::Scalar(150,135,115,0),cv::Scalar(165,150,130,255),mask);
+     int morph_size = 20;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    cv::dilate(mask, mask, element);
+    cv::erode(mask, mask, element);
+    mat.setTo(cv::Scalar(255,255,255),mask);
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
     
 }
 
 int def1 = 0;
--(UIImage*)findContour:(cv::Mat)mat
+-(UIImage*)findContour:(cv::Mat)mat2
 {
     
-    cv::Mat originalMat = mat;
+    cv::Mat originalMat = mat2;
+    UIImage *image2 = [UIImageCVMatConverter UIImageFromCVMat:mat2];
+    cv::Mat mat = [UIImageCVMatConverter cvMatFromUIImage:image2];
+    cv::Mat mask;
+    cv::inRange(mat,cv::Scalar(105,120,130,0),cv::Scalar(140,160,170,255),mask);
+    //cv::inRange(mat,cv::Scalar(150,135,115,0),cv::Scalar(165,150,130,255),mask);
+    int morph_size = 20;
+    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    cv::dilate(mask, mask, element);
+    cv::erode(mask, mask, element);
+    mat.setTo(cv::Scalar(255,255,255),mask);
+
+    
 //    cv::vector<cv::Mat> layers;
 //    split(mat, layers);
 //    mat = layers[1];
     //change to greyscale
     cv::cvtColor(mat, mat, CV_RGB2GRAY);
     //perform threshold
-    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 65);
+    cv::adaptiveThreshold(mat, mat, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 901, 70);
     //opening to join scattered pieces of contours
-    int morph_size = 20;
-    cv::Mat element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
+    element = getStructuringElement( cv::MORPH_ELLIPSE, cv::Size( morph_size , morph_size ), cv::Point(-1,-1) );
     cv::dilate(mat, mat, element);
     cv::erode(mat, mat, element);
     //count contours
