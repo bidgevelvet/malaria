@@ -30,7 +30,7 @@
 @end
 
 @implementation ViewController
-@synthesize myScrollView,imageView;
+@synthesize myScrollView,imageView,WBCSum;
 
 NSInteger srctype = 0;
 
@@ -273,8 +273,10 @@ NSInteger srctype = 0;
 }
 
 int def1 = 0;
+int def = 0;
+int nsum;
 -(UIImage*)findContour:(cv::Mat)mat2
-{
+{NSLog(@"test2 %d",nsum);
     
     cv::Mat originalMat = mat2;
     UIImage *image2 = [UIImageCVMatConverter UIImageFromCVMat:mat2];
@@ -354,20 +356,36 @@ int def1 = 0;
     
     int nsum2 = def1+ncont;
     def1 = nsum2;
+
+
+    NSString *Sum = self.WBCSum.text;
+    NSString *temp = [Sum substringWithRange:NSMakeRange(4, ([Sum length]-4))];
+    int value = [temp intValue];
+
     
     NSLog(@"%d",ncont);
-    showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
+    showCount2.text = [NSString stringWithFormat:@"Parasite:%d",ncont];
     
     
     self.globalMat = originalMat;
-    showCount2.text = [NSString stringWithFormat:@"count:%d",ncont];
+    showCount2.text = [NSString stringWithFormat:@"Parasite:%d",ncont];
    
-    showSum2.text = [NSString stringWithFormat:@"count:%d",nsum2];
+    showSum2.text = [NSString stringWithFormat:@"SUM:%d",nsum2];
     
-    if (nsum<200 && nsum2<10) {
-        showResult.text = [NSString stringWithFormat:@"Negative"];
+    if (value<200) {
+        showResult.text = [NSString stringWithFormat:@"Processing"];
+        NSLog(@"test value1 %d",value);
+         NSLog(@"aa nsum1 %d",nsum2);
     }
-    else showResult.text = [NSString stringWithFormat:@"Positive"];
+    else if (value>=200&&value<500){
+        showResult.text = [NSString stringWithFormat:@"Processing"];
+        NSLog(@"testd2 nsum %d",nsum);
+        
+    }
+    else if (value>=200&&nsum2>0){
+        showResult.text = [NSString stringWithFormat:@"Positive"];
+    }
+    else showResult.text = [NSString stringWithFormat:@"Negative"];
     
     return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
 }
@@ -400,8 +418,7 @@ int def1 = 0;
     self.globalMat = mat;
     return [UIImageCVMatConverter UIImageFromCVMat:mat];
 }
-int def = 0;
-int nsum;
+
 - (UIImage*)wbcCountMethod:(cv::Mat)mat
 {
     
@@ -432,27 +449,29 @@ int nsum;
     int nsum = def+ncont;
     def = nsum;
     
-    NSLog(@"%d",ncont);
-    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+    NSLog(@"%d",nsum);
+    showCount.text = [NSString stringWithFormat:@"WBC:%d",ncont];
     self.globalMat = originalMat;
-    showCount.text = [NSString stringWithFormat:@"count:%d",ncont];
+    showCount.text = [NSString stringWithFormat:@"WBC:%d",ncont];
     
-    showSum.text = [NSString stringWithFormat:@"count:%d",nsum];
+    showSum.text = [NSString stringWithFormat:@"SUM:%d",nsum];
     
     
     return [UIImageCVMatConverter UIImageFromCVMat:originalMat];
 }
 
 - (IBAction)resetWBC:(id)sender {
-    showCount.text = [NSString stringWithFormat:@"count:%d",0];
-    showSum.text = [NSString stringWithFormat:@"count:%d",0];
+    showCount.text = [NSString stringWithFormat:@"WBC:%d",0];
+    showSum.text = [NSString stringWithFormat:@"SUM:%d",0];
+    showResult.text = [NSString stringWithFormat:@"Result"];
     def = 0;
 }
 
 
 - (IBAction)resetPara:(id)sender {
-    showCount2.text = [NSString stringWithFormat:@"count:%d",0];
-    showSum2.text = [NSString stringWithFormat:@"count:%d",0];
+    showCount2.text = [NSString stringWithFormat:@"Parasite:%d",0];
+    showSum2.text = [NSString stringWithFormat:@"Sum:%d",0];
+    showResult.text = [NSString stringWithFormat:@"Result"];
     def1 = 0;
 }
 

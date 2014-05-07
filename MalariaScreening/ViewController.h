@@ -40,6 +40,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *greenThreshold;
 
+@property (weak, nonatomic) IBOutlet UILabel *WBCSum;
 
 -(IBAction)thresholdButton:(id)sender;
 -(IBAction)findContourButton:(id)sender;
